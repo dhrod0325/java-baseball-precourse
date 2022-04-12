@@ -8,16 +8,16 @@ import java.util.List;
 
 public class Balls implements Iterable<Ball> {
     private final List<Ball> ballList;
-    private final String stringValue;
+    private final String input;
 
     public Balls(String input) {
         InputValidator.validateInput(input);
 
-        this.stringValue = input;
-        this.ballList = parseBallList(input);
+        this.input = input;
+        this.ballList = parse(input);
     }
 
-    private List<Ball> parseBallList(String input) {
+    private List<Ball> parse(String input) {
         List<Ball> result = new ArrayList<>();
 
         for (int index = 0; index < input.length(); index++) {
@@ -34,12 +34,17 @@ public class Balls implements Iterable<Ball> {
     }
 
     public Ball findBallByTarget(Ball targetBall) {
-        int index = stringValue.indexOf(String.valueOf(targetBall.getNumber()));
+        int index = targetBall.findIndex(this);
 
         if (index == -1) {
             return null;
         }
 
         return ballList.get(index);
+    }
+
+    @Override
+    public String toString() {
+        return input;
     }
 }

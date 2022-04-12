@@ -10,11 +10,8 @@ import java.util.Set;
 public class InputValidator {
     public static void validateInput(String input) {
         validateLength(input);
-
         validateMinMax(input);
-
         validateDuplicateLetter(input);
-
         validateNumber(input);
     }
 
@@ -54,13 +51,11 @@ public class InputValidator {
         if (stringSet.size() != Constants.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
         }
-
     }
 
     private static void validateLength(String input) {
         if (input.length() != Constants.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
         }
-
     }
 }

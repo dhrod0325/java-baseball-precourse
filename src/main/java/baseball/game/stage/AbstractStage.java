@@ -36,15 +36,15 @@ public abstract class AbstractStage implements Observer {
         return getStageRunningState() != gameController.getGameState();
     }
 
-    public View getView() {
+    protected View getView() {
         return stageData.getView();
     }
 
-    public Player getPlayer() {
+    protected Player getPlayer() {
         return stageData.getPlayer();
     }
 
-    public Computer getComputer() {
+    protected Computer getComputer() {
         return stageData.getComputer();
     }
 }

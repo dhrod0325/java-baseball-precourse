@@ -11,8 +11,8 @@ public class Ball {
         this.position = position;
     }
 
-    public int getNumber() {
-        return number;
+    public int findIndex(Balls balls) {
+        return balls.toString().indexOf(String.valueOf(number));
     }
 
     public BallState getState(Balls targetBalls) {
