@@ -1,5 +1,7 @@
 package baseball.domain.ball;
 
+import baseball.domain.validator.InputValidator;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,6 +11,8 @@ public class Balls implements Iterable<Ball> {
     private final String input;
 
     public Balls(String input) {
+        InputValidator.validateInput(input);
+
         this.input = input;
         this.ballList = parseBallList(input);
     }
