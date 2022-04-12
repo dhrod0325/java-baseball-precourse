@@ -4,12 +4,12 @@ import baseball.constant.Constants;
 import baseball.enums.EndMenu;
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
-import baseball.game.stage.domain.Stage;
+import baseball.game.stage.domain.StageData;
 
 import static baseball.enums.GameState.END_MENU;
 
 public class EndMenuStage extends AbstractStage {
-    public EndMenuStage(Stage stage) {
+    public EndMenuStage(StageData stage) {
         super(stage);
     }
 
@@ -21,11 +21,12 @@ public class EndMenuStage extends AbstractStage {
     @Override
     public void onUpdate(GameController gameController) {
         getView().println(Constants.MSG_SELECT_END_MENU);
-        selectMenu(gameController, getView().readLine());
+
+        EndMenu endMenu = selectMenu(getView().readLine());
+        gameController.setGameState(endMenu.getState());
     }
 
-    public void selectMenu(GameController gameController, String selectEndMenu) {
-        EndMenu menu = EndMenu.fromString(selectEndMenu);
-        gameController.setGameState(menu.getState());
+    public EndMenu selectMenu(String selectEndMenu) {
+        return EndMenu.fromString(selectEndMenu);
     }
 }

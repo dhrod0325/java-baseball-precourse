@@ -4,7 +4,7 @@ import baseball.domain.user.Computer;
 import baseball.domain.user.Player;
 import baseball.view.View;
 
-public class Stage {
+public class StageData {
     private View view;
     private Player player;
     private Computer computer;
@@ -42,8 +42,8 @@ public class Stage {
             return this;
         }
 
-        public Stage build() {
-            Stage stage = new Stage();
+        public StageData build() {
+            StageData stage = new StageData();
             stage.view = view;
             stage.computer = computer;
             stage.player = player;

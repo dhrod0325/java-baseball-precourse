@@ -5,13 +5,13 @@ import baseball.domain.ball.Balls;
 import baseball.domain.score.Scores;
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
-import baseball.game.stage.domain.Stage;
+import baseball.game.stage.domain.StageData;
 
 import static baseball.enums.GameState.END_MENU;
 import static baseball.enums.GameState.INPUT_STATE;
 
-public class InputAndSwingStage extends AbstractStage {
-    public InputAndSwingStage(Stage stage) {
+public class InputStage extends AbstractStage {
+    public InputStage(StageData stage) {
         super(stage);
     }
 
@@ -23,11 +23,8 @@ public class InputAndSwingStage extends AbstractStage {
     @Override
     public void onUpdate(GameController gameController) {
         getView().print(Constants.MSG_INPUT);
-        inputAndSwing(gameController, getView().readLine());
-    }
 
-    public void inputAndSwing(GameController gameController, String input) {
-        Scores scores = getScoreByInput(input);
+        Scores scores = getScoreByInput(getView().readLine());
         getView().println(scores.toString());
 
         if (scores.isAnswer()) {
@@ -36,7 +33,7 @@ public class InputAndSwingStage extends AbstractStage {
         }
     }
 
-    private Scores getScoreByInput(String input) {
+    public Scores getScoreByInput(String input) {
         Balls balls = new Balls(input);
         Balls targetBalls = getComputer().throwTheBall();
 

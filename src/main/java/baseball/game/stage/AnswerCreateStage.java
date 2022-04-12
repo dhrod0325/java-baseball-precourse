@@ -2,10 +2,10 @@ package baseball.game.stage;
 
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
-import baseball.game.stage.domain.Stage;
+import baseball.game.stage.domain.StageData;
 
 public class AnswerCreateStage extends AbstractStage {
-    public AnswerCreateStage(Stage stage) {
+    public AnswerCreateStage(StageData stage) {
         super(stage);
     }
 

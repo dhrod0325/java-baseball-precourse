@@ -8,12 +8,12 @@ import java.util.List;
 
 public class Balls implements Iterable<Ball> {
     private final List<Ball> ballList;
-    private final String input;
+    private final String stringValue;
 
     public Balls(String input) {
         InputValidator.validateInput(input);
 
-        this.input = input;
+        this.stringValue = input;
         this.ballList = parseBallList(input);
     }
 
@@ -34,7 +34,7 @@ public class Balls implements Iterable<Ball> {
     }
 
     public Ball findBallByTarget(Ball targetBall) {
-        int index = input.indexOf(String.valueOf(targetBall.getNumber()));
+        int index = stringValue.indexOf(String.valueOf(targetBall.getNumber()));
 
         if (index == -1)
             return null;

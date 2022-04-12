@@ -4,17 +4,17 @@ import baseball.domain.user.Computer;
 import baseball.domain.user.Player;
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
-import baseball.game.stage.domain.Stage;
+import baseball.game.stage.domain.StageData;
 import baseball.view.View;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public abstract class AbstractStage implements Observer {
-    private final Stage stage;
+    private final StageData stageData;
 
-    public AbstractStage(Stage stage) {
-        this.stage = stage;
+    public AbstractStage(StageData stageData) {
+        this.stageData = stageData;
     }
 
     public abstract GameState getStageRunningState();
@@ -36,14 +36,14 @@ public abstract class AbstractStage implements Observer {
     }
 
     public View getView() {
-        return stage.getView();
+        return stageData.getView();
     }
 
     public Player getPlayer() {
-        return stage.getPlayer();
+        return stageData.getPlayer();
     }
 
     public Computer getComputer() {
-        return stage.getComputer();
+        return stageData.getComputer();
     }
 }
