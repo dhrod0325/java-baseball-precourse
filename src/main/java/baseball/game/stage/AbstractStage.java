@@ -25,8 +25,9 @@ public abstract class AbstractStage implements Observer {
     public void update(Observable o, Object arg) {
         GameController gameController = (GameController) arg;
 
-        if (isStageTurn(gameController))
+        if (isStageTurn(gameController)) {
             return;
+        }
 
         onUpdate(gameController);
     }

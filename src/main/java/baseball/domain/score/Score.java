@@ -17,7 +17,10 @@ public class Score {
 
     @Override
     public String toString() {
-        if (state == BallState.NOTHING) return "";
+        if (state == BallState.NOTHING) {
+            return "";
+        }
+
         return count + state.getName();
     }
 

@@ -36,8 +36,9 @@ public class Balls implements Iterable<Ball> {
     public Ball findBallByTarget(Ball targetBall) {
         int index = stringValue.indexOf(String.valueOf(targetBall.getNumber()));
 
-        if (index == -1)
+        if (index == -1) {
             return null;
+        }
 
         return ballList.get(index);
     }

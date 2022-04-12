@@ -18,10 +18,12 @@ public enum EndMenu {
     }
 
     public static EndMenu fromString(String name) {
-        for (EndMenu menu : EndMenu.values()) {
-            if (menu.name.equals(name)) {
-                return menu;
-            }
+        if (Constants.KEY_END_GAME.equals(name)) {
+            return EXIT;
+        }
+
+        if (Constants.KEY_RETRY_GAME.equals(name)) {
+            return RETRY;
         }
 
         throw new IllegalArgumentException();

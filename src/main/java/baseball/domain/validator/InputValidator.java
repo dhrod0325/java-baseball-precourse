@@ -32,7 +32,6 @@ public class InputValidator {
         if (letterNumber > AnswerGenerateService.LETTER_MAX) {
             throw new IllegalArgumentException();
         }
-
     }
 
     private static void validateMinOfLetter(int letterNumber) {
@@ -52,12 +51,16 @@ public class InputValidator {
     private static void validateDuplicateLetter(String input) {
         Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
 
-        if (stringSet.size() != Constants.ANSWER_LENGTH)
+        if (stringSet.size() != Constants.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
+        }
+
     }
 
     private static void validateLength(String input) {
-        if (input.length() != Constants.ANSWER_LENGTH)
+        if (input.length() != Constants.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
+        }
+
     }
 }

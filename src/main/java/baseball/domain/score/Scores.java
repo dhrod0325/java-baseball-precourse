@@ -31,8 +31,9 @@ public class Scores {
 
     @Override
     public String toString() {
-        if (isMaxCount(BallState.NOTHING))
+        if (isMaxCount(BallState.NOTHING)) {
             return BallState.NOTHING.getName();
+        }
 
         List<String> result = scoreMapToStringList();
 

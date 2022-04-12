@@ -18,11 +18,13 @@ public class Ball {
     public BallState getState(Balls targetBalls) {
         Ball targetBall = targetBalls.findBallByTarget(this);
 
-        if (targetBall == null)
+        if (targetBall == null) {
             return BallState.NOTHING;
+        }
 
-        if (targetBall.position == position)
+        if (targetBall.position == position) {
             return BallState.STRIKE;
+        }
 
         return BallState.BALL;
     }
