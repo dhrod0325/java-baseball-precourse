@@ -3,15 +3,15 @@ package baseball.game.stage;
 import baseball.constant.Constants;
 import baseball.domain.ball.Balls;
 import baseball.domain.score.Scores;
-import baseball.domain.stage.Stage;
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
+import baseball.game.stage.domain.Stage;
 
 import static baseball.enums.GameState.END_MENU;
 import static baseball.enums.GameState.INPUT_STATE;
 
-public class InputStage extends AbstractStage {
-    public InputStage(Stage stage) {
+public class InputAndSwingStage extends AbstractStage {
+    public InputAndSwingStage(Stage stage) {
         super(stage);
     }
 
@@ -23,19 +23,23 @@ public class InputStage extends AbstractStage {
     @Override
     public void onUpdate(GameController gameController) {
         getView().print(Constants.MSG_INPUT);
-
-        String input = getView().readLine();
-
-        input(gameController, input);
+        inputAndSwing(gameController, getView().readLine());
     }
 
-    public void input(GameController gameController, String input) {
-        Scores scores = getPlayer().swing(new Balls(input), getComputer().throwTheBall());
+    public void inputAndSwing(GameController gameController, String input) {
+        Scores scores = getScoreByInput(input);
         getView().println(scores.toString());
 
         if (scores.isAnswer()) {
             getView().println(Constants.MSG_SOLUTION);
             gameController.setGameState(END_MENU);
         }
+    }
+
+    private Scores getScoreByInput(String input) {
+        Balls balls = new Balls(input);
+        Balls targetBalls = getComputer().throwTheBall();
+
+        return getPlayer().swing(balls, targetBalls);
     }
 }

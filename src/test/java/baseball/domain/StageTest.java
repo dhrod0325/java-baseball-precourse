@@ -1,12 +1,13 @@
 package baseball.domain;
 
-import baseball.domain.stage.Stage;
+import baseball.domain.bat.Bat;
 import baseball.domain.user.Computer;
 import baseball.domain.user.Player;
 import baseball.game.controller.GameController;
 import baseball.game.stage.AnswerCreateStage;
 import baseball.game.stage.EndMenuStage;
-import baseball.game.stage.InputStage;
+import baseball.game.stage.InputAndSwingStage;
+import baseball.game.stage.domain.Stage;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +32,11 @@ public class StageTest extends NsTest {
         this.computer = new Computer();
         this.computer.setAnswerGenerateService(() -> "123");
 
-        this.stage = new Stage(new View(), new Player(), computer);
+        this.stage = new Stage.Builder()
+                .setView(new View())
+                .setPlayer(new Player(new Bat()))
+                .setComputer(computer)
+                .build();
 
         AnswerCreateStage answerCreateStage = new AnswerCreateStage(stage);
         answerCreateStage.onUpdate(gameController);
@@ -46,16 +51,16 @@ public class StageTest extends NsTest {
     @Test
     @DisplayName("하나도 못맞출경우 낫싱이 출력되는지 확인함")
     public void 테스트_InputStage_낫싱() {
-        InputStage inputStage = new InputStage(stage);
-        inputStage.input(gameController, "456");
+        InputAndSwingStage inputStage = new InputAndSwingStage(stage);
+        inputStage.inputAndSwing(gameController, "456");
         assertEquals(output(), "낫싱");
     }
 
     @Test
     @DisplayName("정답일경우 3스트라이크가 출력되는지 확인함")
     public void 테스트_InputStage_정답() {
-        InputStage inputStage = new InputStage(stage);
-        inputStage.input(gameController, "123");
+        InputAndSwingStage inputStage = new InputAndSwingStage(stage);
+        inputStage.inputAndSwing(gameController, "123");
         assertEquals(gameController.getGameState(), END_MENU);
     }
 
