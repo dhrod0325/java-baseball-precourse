@@ -1,17 +1,22 @@
 package baseball.domain.user;
 
-import baseball.constant.Constants;
 import baseball.domain.ball.Balls;
 import baseball.service.answer.AnswerGenerateService;
-import baseball.service.answer.RandomAnswerGenerateService;
 
 public class Computer {
     private String answer;
 
-    private AnswerGenerateService answerGenerateService = new RandomAnswerGenerateService(Constants.ANSWER_LENGTH);
+    private AnswerGenerateService answerGenerateService;
 
     public void setAnswerGenerateService(AnswerGenerateService answerGenerateService) {
         this.answerGenerateService = answerGenerateService;
+    }
+
+    public Computer() {
+    }
+
+    public Computer(AnswerGenerateService answerGenerateService) {
+        setAnswerGenerateService(answerGenerateService);
     }
 
     public Balls throwTheBall() {

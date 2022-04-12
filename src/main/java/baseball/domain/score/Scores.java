@@ -14,7 +14,7 @@ public class Scores {
     private final Map<BallState, Score> scoreMap = new HashMap<>();
 
     public Scores(Balls balls, Balls targetBalls) {
-        parseScoreMap(balls, targetBalls);
+        parse(balls, targetBalls);
     }
 
     public boolean isAnswer() {
@@ -23,6 +23,10 @@ public class Scores {
 
     public int getScoreCount(BallState state) {
         return getScore(state).getCount();
+    }
+
+    private boolean isMaxCount(BallState state) {
+        return getScoreCount(state) == Constants.ANSWER_LENGTH;
     }
 
     @Override
@@ -37,7 +41,7 @@ public class Scores {
         return String.join(" ", result).trim();
     }
 
-    private void parseScoreMap(Balls balls, Balls targetBalls) {
+    private void parse(Balls balls, Balls targetBalls) {
         for (Ball ball : balls) {
             BallState state = ball.getState(targetBalls);
 
@@ -60,9 +64,5 @@ public class Scores {
         }
 
         return result;
-    }
-
-    private boolean isMaxCount(BallState state) {
-        return getScoreCount(state) == Constants.ANSWER_LENGTH;
     }
 }
