@@ -33,7 +33,12 @@ public class Balls implements Iterable<Ball> {
         return ballList.iterator();
     }
 
-    public int findBallByTarget(Ball targetBall) {
-        return input.indexOf(String.valueOf(targetBall.getNumber()));
+    public Ball findBallByTarget(Ball targetBall) {
+        int index = input.indexOf(String.valueOf(targetBall.getNumber()));
+
+        if (index == -1)
+            return null;
+
+        return ballList.get(index);
     }
 }
