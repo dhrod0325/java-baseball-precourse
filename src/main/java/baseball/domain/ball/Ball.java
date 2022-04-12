@@ -11,19 +11,19 @@ public class Ball {
         this.position = position;
     }
 
-    public BallState getState(Balls targetBalls) {
-        int targetPosition = targetBalls.findBallByTarget(this);
+    public int getNumber() {
+        return number;
+    }
 
-        if (targetPosition == -1)
+    public BallState getState(Balls targetBalls) {
+        Ball targetBall = targetBalls.findBallByTarget(this);
+
+        if (targetBall == null)
             return BallState.NOTHING;
 
-        if (targetPosition == position)
+        if (targetBall.position == position)
             return BallState.STRIKE;
 
         return BallState.BALL;
-    }
-
-    public int getNumber() {
-        return number;
     }
 }
