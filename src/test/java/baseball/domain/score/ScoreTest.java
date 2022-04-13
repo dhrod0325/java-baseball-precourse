@@ -1,7 +1,7 @@
 package baseball.domain.score;
 
-import baseball.domain.object.Ball;
-import baseball.domain.object.BallContainer;
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.BallContainer;
 import baseball.domain.object.Referee;
 import baseball.domain.object.RefereeImpl;
 import org.junit.jupiter.api.Test;

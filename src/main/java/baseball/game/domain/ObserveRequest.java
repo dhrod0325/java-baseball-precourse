@@ -1,6 +1,6 @@
 package baseball.game.domain;
 
-import baseball.domain.object.BallContainer;
+import baseball.domain.ball.BallContainer;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
-package baseball.domain.service;
+package baseball.domain.ball.generator;
 
-import baseball.domain.object.Ball;
+import baseball.domain.ball.Ball;
 
 public interface BallGenerator {
     int MIN_NUMBER = 1;

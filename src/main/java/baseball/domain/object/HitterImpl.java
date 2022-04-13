@@ -1,6 +1,8 @@
 package baseball.domain.object;
 
-import baseball.domain.service.BallGenerator;
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.BallContainer;
+import baseball.domain.ball.generator.BallGenerator;
 
 public class HitterImpl implements Hitter {
     private final BallGenerator ballGenerator;

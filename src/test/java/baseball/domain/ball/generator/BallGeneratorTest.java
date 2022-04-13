@@ -1,6 +1,6 @@
-package baseball.domain.service;
+package baseball.domain.ball.generator;
 
-import baseball.domain.object.Ball;
+import baseball.domain.ball.Ball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

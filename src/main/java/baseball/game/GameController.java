@@ -2,8 +2,9 @@ package baseball.game;
 
 import baseball.constant.Constants;
 import baseball.domain.object.*;
-import baseball.domain.service.InputBallGenerator;
-import baseball.domain.service.RandomBallGenerator;
+import baseball.domain.ball.BallContainer;
+import baseball.domain.ball.generator.InputBallGenerator;
+import baseball.domain.ball.generator.RandomBallGenerator;
 import baseball.game.domain.GameConfig;
 import baseball.game.domain.ObserveRequest;
 import baseball.game.enums.GameState;

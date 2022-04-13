@@ -1,6 +1,6 @@
 package baseball.domain.object;
 
-import baseball.domain.object.BallContainer;
+import baseball.domain.ball.BallContainer;
 import baseball.domain.score.Score;
 
 public interface Referee {
