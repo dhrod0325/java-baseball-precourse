@@ -18,7 +18,7 @@ public class RefereeImpl implements Referee {
         Score score = new Score();
 
         for (BallPiece pitchBallPiece : pitchBall) {
-            score.addState(checkPitchResult(swingBall, pitchBallPiece));
+            score.addPitchResult(checkPitchResult(swingBall, pitchBallPiece));
         }
 
         return score;

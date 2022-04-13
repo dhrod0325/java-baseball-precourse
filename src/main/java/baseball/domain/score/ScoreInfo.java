@@ -3,11 +3,11 @@ package baseball.domain.score;
 import baseball.enums.PitchResult;
 
 public class ScoreInfo {
-    private final PitchResult state;
+    private final PitchResult pitchResult;
     private int count;
 
-    public ScoreInfo(PitchResult state, int count) {
-        this.state = state;
+    public ScoreInfo(PitchResult pitchResult, int count) {
+        this.pitchResult = pitchResult;
         this.count = count;
     }
 
@@ -17,10 +17,10 @@ public class ScoreInfo {
 
     @Override
     public String toString() {
-        if (state == PitchResult.NOTHING) {
+        if (pitchResult == PitchResult.NOTHING) {
             return "";
         }
-        return count + state.getName();
+        return count + pitchResult.getName();
     }
 
     public int getCount() {

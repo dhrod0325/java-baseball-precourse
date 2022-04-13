@@ -11,10 +11,10 @@ import java.util.Map;
 public class Score {
     private final Map<PitchResult, ScoreInfo> scoreMap = new HashMap<>();
 
-    public void addState(PitchResult state) {
-        ScoreInfo scoreInfo = scoreMap.getOrDefault(state, new ScoreInfo(state, 0));
+    public void addPitchResult(PitchResult pitchResult) {
+        ScoreInfo scoreInfo = scoreMap.getOrDefault(pitchResult, new ScoreInfo(pitchResult, 0));
         scoreInfo.plusCount();
-        scoreMap.put(state, scoreInfo);
+        scoreMap.put(pitchResult, scoreInfo);
     }
 
     public boolean isThreeStrike() {
@@ -33,12 +33,12 @@ public class Score {
         return String.join(" ", result).trim();
     }
 
-    private boolean isMaxCount(PitchResult state) {
-        return getScoreCount(state) == Constants.PITCH_LENGTH;
+    private boolean isMaxCount(PitchResult pitchResult) {
+        return getScoreCount(pitchResult) == Constants.PITCH_LENGTH;
     }
 
-    private int getScoreCount(PitchResult state) {
-        ScoreInfo scoreInfo = scoreMap.get(state);
+    private int getScoreCount(PitchResult pitchResult) {
+        ScoreInfo scoreInfo = scoreMap.get(pitchResult);
         if (scoreInfo == null) {
             return 0;
         }
