@@ -1,12 +1,12 @@
 package baseball.game.stage;
 
-import baseball.domain.object.Hitter;
-import baseball.domain.object.Pitcher;
-import baseball.domain.object.Referee;
-import baseball.enums.GameState;
-import baseball.game.GameController;
+import baseball.domain.Hitter;
+import baseball.domain.Pitcher;
+import baseball.domain.Referee;
+import baseball.game.controller.GameController;
+import baseball.game.domain.ObserveRequest;
+import baseball.game.enums.GameState;
 import baseball.game.domain.GameConfig;
-import baseball.view.View;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -48,7 +48,7 @@ public abstract class AbstractStage implements Observer {
         return getStageRunningState() != gameController.getGameState();
     }
 
-    protected View getView() {
+    protected StageView getView() {
         return config.getView();
     }
 

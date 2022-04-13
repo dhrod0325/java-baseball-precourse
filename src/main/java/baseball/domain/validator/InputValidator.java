@@ -1,7 +1,7 @@
 package baseball.domain.validator;
 
 import baseball.constant.Constants;
-import baseball.service.BallGenerator;
+import baseball.domain.service.BallGenerator;
 
 import java.util.Arrays;
 import java.util.HashSet;
