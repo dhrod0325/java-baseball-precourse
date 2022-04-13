@@ -5,7 +5,9 @@ import baseball.domain.ball.BallPiece;
 import baseball.domain.ball.PitchWithSwingBall;
 import baseball.domain.object.Referee;
 import baseball.domain.score.Score;
-import baseball.enums.BallState;
+import baseball.enums.PitchResult;
+
+import static baseball.enums.PitchResult.*;
 
 public class RefereeImpl implements Referee {
     @Override
@@ -16,24 +18,23 @@ public class RefereeImpl implements Referee {
         Score score = new Score();
 
         for (BallPiece pitchBallPiece : pitchBall) {
-            BallState state = calcBallState(swingBall, pitchBallPiece);
-            score.addBallState(state);
+            score.addState(checkPitchResult(swingBall, pitchBallPiece));
         }
 
         return score;
     }
 
-    private BallState calcBallState(Ball swingBall, BallPiece pitchBallPiece) {
+    private PitchResult checkPitchResult(Ball swingBall, BallPiece pitchBallPiece) {
         BallPiece ballPiece = swingBall.getPieceByNumber(pitchBallPiece.getNumber());
 
         if (ballPiece == null) {
-            return BallState.NOTHING;
+            return NOTHING;
         }
 
         if (ballPiece.getPosition() == pitchBallPiece.getPosition()) {
-            return BallState.STRIKE;
+            return STRIKE;
         }
 
-        return BallState.BALL;
+        return BALL;
     }
 }

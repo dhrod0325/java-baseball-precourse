@@ -1,13 +1,12 @@
 package baseball.game.stage.impl;
 
 import baseball.constant.Constants;
-import baseball.domain.ball.PitchWithSwingBall;
 import baseball.domain.score.Score;
 import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.domain.GameConfig;
-import baseball.game.stage.ObserveRequest;
 import baseball.game.stage.AbstractStage;
+import baseball.game.stage.ObserveRequest;
 
 public class ScoreCalcStage extends AbstractStage {
     public ScoreCalcStage(GameConfig config) {
@@ -21,16 +20,12 @@ public class ScoreCalcStage extends AbstractStage {
 
     @Override
     public void onUpdate(GameController gameController, ObserveRequest request) {
-        PitchWithSwingBall pitchWithSwingBall = request.getAttribute("pitchWithSwingBall");
-
-        Score score = getReferee().calcScore(pitchWithSwingBall);
-
+        Score score = getReferee().calcScore(request.getAttribute("pitchWithSwingBall"));
         getView().println(score.toString());
 
         boolean isThreeStrike = score.isThreeStrike();
 
         ifNotThreeStrikeThenLoadPitchWithSwingStage(isThreeStrike, gameController);
-
         ifThreeStrikeThenLoadRetryOrExitStage(isThreeStrike, gameController);
     }
 
@@ -38,7 +33,6 @@ public class ScoreCalcStage extends AbstractStage {
         if (!isThreeStrike) {
             return;
         }
-
         getView().println(Constants.MSG_SOLUTION);
         gameController.loadRetryOrExitStage();
     }
@@ -47,7 +41,6 @@ public class ScoreCalcStage extends AbstractStage {
         if (isThreeStrike) {
             return;
         }
-
         gameController.loadPitchWithSwingStage();
     }
 }

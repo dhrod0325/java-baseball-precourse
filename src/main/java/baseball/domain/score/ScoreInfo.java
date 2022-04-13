@@ -1,12 +1,12 @@
 package baseball.domain.score;
 
-import baseball.enums.BallState;
+import baseball.enums.PitchResult;
 
 public class ScoreInfo {
-    private final BallState state;
+    private final PitchResult state;
     private int count;
 
-    public ScoreInfo(BallState state, int count) {
+    public ScoreInfo(PitchResult state, int count) {
         this.state = state;
         this.count = count;
     }
@@ -17,10 +17,9 @@ public class ScoreInfo {
 
     @Override
     public String toString() {
-        if (state == BallState.NOTHING) {
+        if (state == PitchResult.NOTHING) {
             return "";
         }
-
         return count + state.getName();
     }
 

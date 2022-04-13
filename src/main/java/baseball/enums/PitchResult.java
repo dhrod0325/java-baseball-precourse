@@ -2,14 +2,14 @@ package baseball.enums;
 
 import baseball.constant.Constants;
 
-public enum BallState {
+public enum PitchResult {
     STRIKE(Constants.STATE_STRIKE),
     BALL(Constants.STATE_BALL),
     NOTHING(Constants.STATE_NOTHING);
 
     private final String name;
 
-    BallState(String name) {
+    PitchResult(String name) {
         this.name = name;
     }
 

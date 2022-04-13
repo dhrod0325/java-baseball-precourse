@@ -16,11 +16,9 @@ public class RandomBallGenerator implements BallGenerator {
     @Override
     public Ball generate() {
         Set<String> balls = new HashSet<>();
-
         while (balls.size() < length) {
             balls.add(String.valueOf(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)));
         }
-
         return new Ball(String.join("", balls));
     }
 }

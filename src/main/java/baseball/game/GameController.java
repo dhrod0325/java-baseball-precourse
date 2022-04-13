@@ -37,7 +37,6 @@ public class GameController extends Observable {
     public void loadScoreCalcStage(PitchWithSwingBall pitchWithSwingBall) {
         ObserveRequest request = new ObserveRequest();
         request.putAttribute("pitchWithSwingBall", pitchWithSwingBall);
-
         setGameState(SCORE_CALC);
         notifyObservers(request);
     }
