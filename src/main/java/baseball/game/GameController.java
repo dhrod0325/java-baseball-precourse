@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.domain.ball.PitchWithSwingBall;
+import baseball.domain.ball.SwingBall;
 import baseball.enums.GameState;
 import baseball.enums.RetryOrExit;
 import baseball.game.stage.ObserveRequest;
@@ -34,7 +34,7 @@ public class GameController extends Observable {
         notifyObservers();
     }
 
-    public void loadScoreCalcStage(PitchWithSwingBall pitchWithSwingBall) {
+    public void loadScoreCalcStage(SwingBall pitchWithSwingBall) {
         ObserveRequest request = new ObserveRequest();
         request.putAttribute("pitchWithSwingBall", pitchWithSwingBall);
         setGameState(SCORE_CALC);

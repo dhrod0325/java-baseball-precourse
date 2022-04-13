@@ -1,6 +1,8 @@
 package baseball.game.stage.impl;
 
 import baseball.constant.Constants;
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.SwingBall;
 import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.domain.GameConfig;
@@ -9,8 +11,8 @@ import baseball.game.stage.ObserveRequest;
 
 import static baseball.enums.GameState.PITCH_WITH_SWING;
 
-public class PitchWithSwingStage extends AbstractStage {
-    public PitchWithSwingStage(GameConfig config) {
+public class PitchAndSwingStage extends AbstractStage {
+    public PitchAndSwingStage(GameConfig config) {
         super(config);
     }
 
@@ -22,6 +24,11 @@ public class PitchWithSwingStage extends AbstractStage {
     @Override
     public void onUpdate(GameController gameController, ObserveRequest request) {
         getView().print(Constants.MSG_INPUT);
-        gameController.loadScoreCalcStage(getHitter().swing(getPitcher().pitch()));
+
+        Ball pitchBall = getPitcher().pitch();
+
+        SwingBall swingBall = getHitter().swing(pitchBall);
+
+        gameController.loadScoreCalcStage(swingBall);
     }
 }

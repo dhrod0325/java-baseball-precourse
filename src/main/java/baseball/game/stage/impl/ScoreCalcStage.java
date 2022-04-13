@@ -21,6 +21,7 @@ public class ScoreCalcStage extends AbstractStage {
     @Override
     public void onUpdate(GameController gameController, ObserveRequest request) {
         Score score = getReferee().calcScore(request.getAttribute("pitchWithSwingBall"));
+
         getView().println(score.toString());
 
         boolean isThreeStrike = score.isThreeStrike();
@@ -33,7 +34,9 @@ public class ScoreCalcStage extends AbstractStage {
         if (!isThreeStrike) {
             return;
         }
+
         getView().println(Constants.MSG_SOLUTION);
+
         gameController.loadRetryOrExitStage();
     }
 
@@ -41,6 +44,7 @@ public class ScoreCalcStage extends AbstractStage {
         if (isThreeStrike) {
             return;
         }
+
         gameController.loadPitchWithSwingStage();
     }
 }

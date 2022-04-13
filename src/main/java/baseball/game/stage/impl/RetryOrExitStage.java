@@ -23,6 +23,11 @@ public class RetryOrExitStage extends AbstractStage {
     @Override
     public void onUpdate(GameController gameController, ObserveRequest request) {
         getView().println(Constants.MSG_SELECT_END_MENU);
-        gameController.loadSelectRetryOrExitStage(RetryOrExit.fromString(getView().readLine()));
+
+        String input = getView().readLine();
+
+        RetryOrExit retryOrExit = RetryOrExit.fromString(input);
+
+        gameController.loadSelectRetryOrExitStage(retryOrExit);
     }
 }

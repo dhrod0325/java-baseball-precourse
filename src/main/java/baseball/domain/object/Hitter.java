@@ -1,8 +1,8 @@
 package baseball.domain.object;
 
 import baseball.domain.ball.Ball;
-import baseball.domain.ball.PitchWithSwingBall;
+import baseball.domain.ball.SwingBall;
 
 public interface Hitter {
-    PitchWithSwingBall swing(Ball pitchBall);
+    SwingBall swing(Ball pitchBall);
 }

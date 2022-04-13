@@ -2,7 +2,7 @@ package baseball.domain.object.impl;
 
 import baseball.domain.ball.Ball;
 import baseball.domain.ball.BallPiece;
-import baseball.domain.ball.PitchWithSwingBall;
+import baseball.domain.ball.SwingBall;
 import baseball.domain.object.Referee;
 import baseball.domain.score.Score;
 import baseball.enums.PitchResult;
@@ -11,7 +11,7 @@ import static baseball.enums.PitchResult.*;
 
 public class RefereeImpl implements Referee {
     @Override
-    public Score calcScore(PitchWithSwingBall pitchWithSwingBall) {
+    public Score calcScore(SwingBall pitchWithSwingBall) {
         Ball swingBall = pitchWithSwingBall.getSwingBall();
         Ball pitchBall = pitchWithSwingBall.getPitchBall();
 

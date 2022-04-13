@@ -1,10 +1,10 @@
 package baseball.domain.ball;
 
-public class PitchWithSwingBall {
+public class SwingBall {
     private final Ball pitchBall;
     private final Ball swingBall;
 
-    public PitchWithSwingBall(Ball pitchBall, Ball swingBall) {
+    public SwingBall(Ball pitchBall, Ball swingBall) {
         this.pitchBall = pitchBall;
         this.swingBall = swingBall;
     }

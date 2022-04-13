@@ -9,7 +9,7 @@ import baseball.domain.object.impl.PitcherImpl;
 import baseball.domain.object.impl.RefereeImpl;
 import baseball.game.GameController;
 import baseball.game.domain.GameConfig;
-import baseball.game.stage.impl.PitchWithSwingStage;
+import baseball.game.stage.impl.PitchAndSwingStage;
 import baseball.game.stage.impl.RetryOrExitStage;
 import baseball.game.stage.impl.ScoreCalcStage;
 import baseball.game.stage.impl.SetUpPitchStage;
@@ -34,7 +34,7 @@ public class Application {
         GameController gameController = new GameController();
 
         gameController.addObserver(new SetUpPitchStage(config));
-        gameController.addObserver(new PitchWithSwingStage(config));
+        gameController.addObserver(new PitchAndSwingStage(config));
         gameController.addObserver(new ScoreCalcStage(config));
         gameController.addObserver(new RetryOrExitStage(config));
 

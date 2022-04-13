@@ -33,16 +33,16 @@ public class Score {
         return String.join(" ", result).trim();
     }
 
-    private boolean isMaxCount(PitchResult pitchResult) {
-        return getScoreCount(pitchResult) == Constants.PITCH_LENGTH;
-    }
-
-    private int getScoreCount(PitchResult pitchResult) {
+    public int getScoreCount(PitchResult pitchResult) {
         ScoreInfo scoreInfo = scoreMap.get(pitchResult);
         if (scoreInfo == null) {
             return 0;
         }
         return scoreInfo.getCount();
+    }
+    
+    private boolean isMaxCount(PitchResult pitchResult) {
+        return getScoreCount(pitchResult) == Constants.PITCH_LENGTH;
     }
 
     private List<String> stringList() {
