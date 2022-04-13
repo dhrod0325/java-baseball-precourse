@@ -26,6 +26,7 @@ public class ScoreCalcStage extends AbstractStage {
         boolean isThreeStrike = score.isThreeStrike();
 
         ifNotThreeStrikeThenLoadPitchWithSwingStage(isThreeStrike, gameController);
+
         ifThreeStrikeThenLoadRetryOrExitStage(isThreeStrike, gameController);
     }
 
