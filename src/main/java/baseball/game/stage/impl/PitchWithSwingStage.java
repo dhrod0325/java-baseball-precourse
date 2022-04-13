@@ -6,8 +6,8 @@ import baseball.domain.ball.PitchWithSwingBall;
 import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.GameConfig;
-import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.domain.GameConfig;
+import baseball.game.domain.ObserveRequest;
 
 import static baseball.enums.GameState.PITCH_WITH_SWING;
 
@@ -29,6 +29,6 @@ public class PitchWithSwingStage extends AbstractStage {
 
         PitchWithSwingBall pitchWithSwingBall = getHitter().swing(pitch);
 
-        gameController.calcScore(pitchWithSwingBall);
+        gameController.loadScoreCalcStage(pitchWithSwingBall);
     }
 }

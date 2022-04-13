@@ -5,8 +5,8 @@ import baseball.enums.GameState;
 import baseball.enums.RetryOrExit;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.GameConfig;
-import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.domain.GameConfig;
+import baseball.game.domain.ObserveRequest;
 
 import static baseball.enums.GameState.RETRY_OR_EXIT;
 
@@ -26,7 +26,7 @@ public class RetryOrExitStage extends AbstractStage {
 
         RetryOrExit retryOrExit = selectMenu(getView().readLine());
 
-        gameController.selectRetryOrExit(retryOrExit);
+        gameController.loadSelectRetryOrExitStage(retryOrExit);
     }
 
     public RetryOrExit selectMenu(String selectEndMenu) {

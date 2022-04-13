@@ -6,8 +6,8 @@ import baseball.domain.score.Score;
 import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.GameConfig;
-import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.domain.GameConfig;
+import baseball.game.domain.ObserveRequest;
 
 public class ScoreCalcStage extends AbstractStage {
     public ScoreCalcStage(GameConfig config) {
@@ -28,12 +28,12 @@ public class ScoreCalcStage extends AbstractStage {
         getView().println(score.toString());
 
         if (!score.isThreeStrike()) {
-            gameController.pitchWithSwing();
+            gameController.loadPitchWithSwingStage();
             return;
         }
 
         getView().println(Constants.MSG_SOLUTION);
 
-        gameController.retryOrExit();
+        gameController.loadRetryOrExitStage();
     }
 }

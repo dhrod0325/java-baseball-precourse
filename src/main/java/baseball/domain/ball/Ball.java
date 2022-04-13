@@ -17,6 +17,16 @@ public class Ball implements Iterable<BallPiece> {
         this.pieces = parsePieces(input);
     }
 
+    public BallPiece getPieceByNumber(int number) {
+        int index = input.indexOf(String.valueOf(number));
+
+        if (index == -1) {
+            return null;
+        }
+
+        return pieces.get(index);
+    }
+
     private List<BallPiece> parsePieces(String input) {
         List<BallPiece> result = new ArrayList<>();
 
@@ -31,20 +41,6 @@ public class Ball implements Iterable<BallPiece> {
     @Override
     public Iterator<BallPiece> iterator() {
         return pieces.iterator();
-    }
-
-    public int getIndexByNumber(int number) {
-        return toString().indexOf(String.valueOf(number));
-    }
-
-    public BallPiece getBallPieceByNumber(int number) {
-        int index = getIndexByNumber(number);
-
-        if (index == -1) {
-            return null;
-        }
-
-        return pieces.get(index);
     }
 
     @Override

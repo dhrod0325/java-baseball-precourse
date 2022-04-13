@@ -3,8 +3,8 @@ package baseball.game.stage.impl;
 import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.GameConfig;
-import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.domain.GameConfig;
+import baseball.game.domain.ObserveRequest;
 
 public class SetUpPitchStage extends AbstractStage {
     public SetUpPitchStage(GameConfig config) {
@@ -20,6 +20,6 @@ public class SetUpPitchStage extends AbstractStage {
     public void onUpdate(GameController gameController, ObserveRequest request) {
         getPitcher().setUpPitch();
 
-        gameController.pitchWithSwing();
+        gameController.loadPitchWithSwingStage();
     }
 }

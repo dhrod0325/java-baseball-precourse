@@ -11,26 +11,14 @@ import java.util.Map;
 public class Score {
     private final Map<BallState, ScoreInfo> scoreMap = new HashMap<>();
 
-    public boolean isThreeStrike() {
-        return isMaxCount(BallState.STRIKE);
-    }
-
-    public int getScoreCount(BallState state) {
-        ScoreInfo scoreInfo = scoreMap.get(state);
-        if (scoreInfo == null) {
-            return 0;
-        }
-        return scoreInfo.getCount();
-    }
-
     public void addBallState(BallState state) {
         ScoreInfo scoreInfo = scoreMap.getOrDefault(state, new ScoreInfo(state, 0));
         scoreInfo.plusCount();
         scoreMap.put(state, scoreInfo);
     }
 
-    private boolean isMaxCount(BallState state) {
-        return getScoreCount(state) == Constants.PITCH_LENGTH;
+    public boolean isThreeStrike() {
+        return isMaxCount(BallState.STRIKE);
     }
 
     @Override
@@ -41,7 +29,20 @@ public class Score {
 
         List<String> result = stringList();
         result.sort(String::compareTo);
+
         return String.join(" ", result).trim();
+    }
+
+    private boolean isMaxCount(BallState state) {
+        return getScoreCount(state) == Constants.PITCH_LENGTH;
+    }
+
+    private int getScoreCount(BallState state) {
+        ScoreInfo scoreInfo = scoreMap.get(state);
+        if (scoreInfo == null) {
+            return 0;
+        }
+        return scoreInfo.getCount();
     }
 
     private List<String> stringList() {

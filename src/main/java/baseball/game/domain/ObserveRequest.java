@@ -1,4 +1,4 @@
-package baseball.game.stage.domain;
+package baseball.game.domain;
 
 import java.util.HashMap;
 import java.util.Map;

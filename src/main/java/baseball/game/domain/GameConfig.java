@@ -1,4 +1,4 @@
-package baseball.game.stage.domain;
+package baseball.game.domain;
 
 import baseball.domain.object.Hitter;
 import baseball.domain.object.Pitcher;

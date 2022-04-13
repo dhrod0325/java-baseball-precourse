@@ -15,22 +15,22 @@ public class RefereeImpl implements Referee {
 
         Score score = new Score();
 
-        for (BallPiece ballPiece : swingBall) {
-            BallState state = calcBallState(pitchBall, ballPiece);
+        for (BallPiece pitchBallPiece : pitchBall) {
+            BallState state = calcBallState(swingBall, pitchBallPiece);
             score.addBallState(state);
         }
 
         return score;
     }
 
-    private BallState calcBallState(Ball ball, BallPiece targetPiece) {
-        BallPiece ballPiece = ball.getBallPieceByNumber(targetPiece.getNumber());
+    private BallState calcBallState(Ball swingBall, BallPiece pitchBallPiece) {
+        BallPiece ballPiece = swingBall.getPieceByNumber(pitchBallPiece.getNumber());
 
         if (ballPiece == null) {
             return BallState.NOTHING;
         }
 
-        if (ballPiece.getPosition() == targetPiece.getPosition()) {
+        if (ballPiece.getPosition() == pitchBallPiece.getPosition()) {
             return BallState.STRIKE;
         }
 

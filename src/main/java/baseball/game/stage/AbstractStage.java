@@ -5,8 +5,8 @@ import baseball.domain.object.Pitcher;
 import baseball.domain.object.Referee;
 import baseball.enums.GameState;
 import baseball.game.GameController;
-import baseball.game.stage.domain.GameConfig;
-import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.domain.GameConfig;
+import baseball.game.domain.ObserveRequest;
 import baseball.view.View;
 
 import java.util.Observable;

@@ -8,7 +8,7 @@ import baseball.domain.object.impl.HitterImpl;
 import baseball.domain.object.impl.PitcherImpl;
 import baseball.domain.object.impl.RefereeImpl;
 import baseball.game.GameController;
-import baseball.game.stage.domain.GameConfig;
+import baseball.game.domain.GameConfig;
 import baseball.game.stage.impl.PitchWithSwingStage;
 import baseball.game.stage.impl.RetryOrExitStage;
 import baseball.game.stage.impl.ScoreCalcStage;

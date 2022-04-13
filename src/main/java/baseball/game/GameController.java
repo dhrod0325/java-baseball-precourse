@@ -3,7 +3,7 @@ package baseball.game;
 import baseball.domain.ball.PitchWithSwingBall;
 import baseball.enums.GameState;
 import baseball.enums.RetryOrExit;
-import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.domain.ObserveRequest;
 
 import java.util.Observable;
 
@@ -24,22 +24,17 @@ public class GameController extends Observable {
         this.gameState = gameState;
     }
 
-    @Override
-    public synchronized boolean hasChanged() {
-        return true;
-    }
-
-    public void pitchWithSwing() {
+    public void loadPitchWithSwingStage() {
         setGameState(PITCH_WITH_SWING);
         notifyObservers();
     }
 
-    public void selectRetryOrExit(RetryOrExit endMenu) {
+    public void loadSelectRetryOrExitStage(RetryOrExit endMenu) {
         setGameState(endMenu.getState());
         notifyObservers();
     }
 
-    public void calcScore(PitchWithSwingBall pitchWithSwingBall) {
+    public void loadScoreCalcStage(PitchWithSwingBall pitchWithSwingBall) {
         ObserveRequest request = new ObserveRequest();
         request.putAttribute("pitchWithSwingBall", pitchWithSwingBall);
 
@@ -47,7 +42,7 @@ public class GameController extends Observable {
         notifyObservers(request);
     }
 
-    public void retryOrExit() {
+    public void loadRetryOrExitStage() {
         setGameState(RETRY_OR_EXIT);
         notifyObservers();
     }
@@ -62,5 +57,10 @@ public class GameController extends Observable {
     public void notifyObservers(Object arg) {
         setChanged();
         super.notifyObservers(arg);
+    }
+
+    @Override
+    public synchronized boolean hasChanged() {
+        return true;
     }
 }
