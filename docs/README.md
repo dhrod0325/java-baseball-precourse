@@ -36,3 +36,19 @@
     - [x]  정답확인 스테이지
         - [x] 단위 테스트 작성
 
+## 4월 13일 로직 재구성
+
+클래스 구성 변경
+기존 -> Ball(공),Balls(공3),Bat(방망이),Computer(컴퓨터),Player
+
+게임 진행 유저 = Player -> Hitter, Pitcher (투수,타자로 변경)
+점수 계산 = Referee(심판이 계산함)
+
+진행순서
+Balls throwBall = pitcher.pitch();
+Balls swingBalls = hitter.swing(throwBall); //입력받은 숫자들
+Score score = referee.checkScore(throwBall,swingBalls); //심판이 스윙결과를 체크
+
+ 
+
+

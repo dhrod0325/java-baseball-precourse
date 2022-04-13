@@ -1,30 +1,30 @@
 package baseball.game.stage.domain;
 
-import baseball.domain.user.Computer;
-import baseball.domain.user.Player;
+import baseball.domain.object.Hitter;
+import baseball.domain.object.Pitcher;
 import baseball.view.View;
 
 public class StageData {
     private View view;
-    private Player player;
-    private Computer computer;
+    private Hitter hitter;
+    private Pitcher pitcher;
 
     public View getView() {
         return view;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Hitter getHitter() {
+        return hitter;
     }
 
-    public Computer getComputer() {
-        return computer;
+    public Pitcher getPitcher() {
+        return pitcher;
     }
 
     public static class Builder {
         private View view;
-        private Player player;
-        private Computer computer;
+        private Hitter hitter;
+        private Pitcher pitcher;
 
         public Builder setView(View view) {
             this.view = view;
@@ -32,21 +32,21 @@ public class StageData {
             return this;
         }
 
-        public Builder setPlayer(Player player) {
-            this.player = player;
+        public Builder setHitter(Hitter hitter) {
+            this.hitter = hitter;
             return this;
         }
 
-        public Builder setComputer(Computer computer) {
-            this.computer = computer;
+        public Builder setPitcher(Pitcher pitcher) {
+            this.pitcher = pitcher;
             return this;
         }
 
         public StageData build() {
             StageData stage = new StageData();
             stage.view = view;
-            stage.computer = computer;
-            stage.player = player;
+            stage.pitcher = pitcher;
+            stage.hitter = hitter;
 
             return stage;
         }

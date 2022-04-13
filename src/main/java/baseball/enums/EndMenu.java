@@ -2,12 +2,12 @@ package baseball.enums;
 
 import baseball.constant.Constants;
 
-import static baseball.enums.GameState.ANSWER_CREATE;
+import static baseball.enums.GameState.PITCH_SETUP;
 import static baseball.enums.GameState.END_GAME;
 
 public enum EndMenu {
     EXIT(Constants.KEY_END_GAME, END_GAME),
-    RETRY(Constants.KEY_RETRY_GAME, ANSWER_CREATE);
+    RETRY(Constants.KEY_RETRY_GAME, PITCH_SETUP);
 
     final String name;
     final GameState state;

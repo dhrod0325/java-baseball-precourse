@@ -1,10 +1,10 @@
 package baseball.game.stage;
 
-import baseball.domain.user.Computer;
-import baseball.domain.user.Player;
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
 import baseball.game.stage.domain.StageData;
+import baseball.domain.object.Hitter;
+import baseball.domain.object.Pitcher;
 import baseball.view.View;
 
 import java.util.Observable;
@@ -40,11 +40,11 @@ public abstract class AbstractStage implements Observer {
         return stageData.getView();
     }
 
-    protected Player getPlayer() {
-        return stageData.getPlayer();
+    protected Hitter getHitter() {
+        return stageData.getHitter();
     }
 
-    protected Computer getComputer() {
-        return stageData.getComputer();
+    protected Pitcher getPitcher() {
+        return stageData.getPitcher();
     }
 }

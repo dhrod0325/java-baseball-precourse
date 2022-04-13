@@ -1,31 +1,50 @@
 package baseball.domain.ball;
 
-import baseball.enums.BallState;
+import baseball.domain.validator.InputValidator;
 
-public class Ball {
-    private final int number;
-    private final int position;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-    public Ball(int number, int position) {
-        this.number = number;
-        this.position = position;
+public class Ball implements Iterable<BallInfo> {
+    private final List<BallInfo> ballList;
+    private final String input;
+
+    public Ball(String input) {
+        InputValidator.validateInput(input);
+
+        this.input = input;
+        this.ballList = parse(input);
     }
 
-    public int findIndex(Balls balls) {
-        return balls.toString().indexOf(String.valueOf(number));
+    private List<BallInfo> parse(String input) {
+        List<BallInfo> result = new ArrayList<>();
+
+        for (int index = 0; index < input.length(); index++) {
+            int number = Integer.parseInt(String.valueOf(input.charAt(index)));
+            result.add(new BallInfo(number, index));
+        }
+
+        return result;
     }
 
-    public BallState getState(Balls targetBalls) {
-        Ball targetBall = targetBalls.findBallByTarget(this);
+    @Override
+    public Iterator<BallInfo> iterator() {
+        return ballList.iterator();
+    }
 
-        if (targetBall == null) {
-            return BallState.NOTHING;
+    public BallInfo findBallByTarget(BallInfo targetBall) {
+        int index = targetBall.findIndex(this);
+
+        if (index == -1) {
+            return null;
         }
 
-        if (targetBall.position == position) {
-            return BallState.STRIKE;
-        }
+        return ballList.get(index);
+    }
 
-        return BallState.BALL;
+    @Override
+    public String toString() {
+        return input;
     }
 }

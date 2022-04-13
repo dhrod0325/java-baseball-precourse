@@ -1,15 +1,16 @@
-package baseball.game.stage;
+package baseball.game.stage.impl;
 
 import baseball.constant.Constants;
 import baseball.enums.EndMenu;
 import baseball.enums.GameState;
 import baseball.game.controller.GameController;
+import baseball.game.stage.AbstractStage;
 import baseball.game.stage.domain.StageData;
 
 import static baseball.enums.GameState.END_MENU;
 
-public class EndMenuStage extends AbstractStage {
-    public EndMenuStage(StageData stage) {
+public class RetryOrEndSelectStage extends AbstractStage {
+    public RetryOrEndSelectStage(StageData stage) {
         super(stage);
     }
 

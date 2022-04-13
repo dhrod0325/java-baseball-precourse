@@ -1,7 +1,7 @@
 package baseball.domain.validator;
 
 import baseball.constant.Constants;
-import baseball.service.answer.AnswerGenerateService;
+import baseball.service.BallGenerator;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -26,13 +26,13 @@ public class InputValidator {
     }
 
     private static void validateMaxOfLetter(int letterNumber) {
-        if (letterNumber > AnswerGenerateService.LETTER_MAX) {
+        if (letterNumber > BallGenerator.MAX_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
 
     private static void validateMinOfLetter(int letterNumber) {
-        if (letterNumber < AnswerGenerateService.LETTER_MIN) {
+        if (letterNumber < BallGenerator.MIN_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
@@ -48,13 +48,13 @@ public class InputValidator {
     private static void validateDuplicateLetter(String input) {
         Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
 
-        if (stringSet.size() != Constants.ANSWER_LENGTH) {
+        if (stringSet.size() != Constants.PITCH_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private static void validateLength(String input) {
-        if (input.length() != Constants.ANSWER_LENGTH) {
+        if (input.length() != Constants.PITCH_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

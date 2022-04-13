@@ -5,7 +5,7 @@ import baseball.enums.GameState;
 import java.util.Observable;
 
 public class GameController extends Observable {
-    private GameState gameState = GameState.ANSWER_CREATE;
+    private GameState gameState = GameState.PITCH_SETUP;
 
     public boolean isRunning() {
         return gameState != GameState.END_GAME;
