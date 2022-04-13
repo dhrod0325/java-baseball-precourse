@@ -16,4 +16,12 @@ public enum PitchResult {
     public String getName() {
         return name;
     }
+
+    public String toString(int count) {
+        if (this == PitchResult.NOTHING) {
+            return "";
+        }
+
+        return count + name;
+    }
 }
