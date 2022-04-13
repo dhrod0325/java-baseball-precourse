@@ -6,41 +6,45 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Ball implements Iterable<BallInfo> {
-    private final List<BallInfo> ballList;
+public class Ball implements Iterable<BallPiece> {
+    private final List<BallPiece> pieces;
     private final String input;
 
     public Ball(String input) {
         InputValidator.validateInput(input);
 
         this.input = input;
-        this.ballList = parse(input);
+        this.pieces = parsePieces(input);
     }
 
-    private List<BallInfo> parse(String input) {
-        List<BallInfo> result = new ArrayList<>();
+    private List<BallPiece> parsePieces(String input) {
+        List<BallPiece> result = new ArrayList<>();
 
         for (int index = 0; index < input.length(); index++) {
             int number = Integer.parseInt(String.valueOf(input.charAt(index)));
-            result.add(new BallInfo(number, index));
+            result.add(new BallPiece(number, index));
         }
 
         return result;
     }
 
     @Override
-    public Iterator<BallInfo> iterator() {
-        return ballList.iterator();
+    public Iterator<BallPiece> iterator() {
+        return pieces.iterator();
     }
 
-    public BallInfo findBallByTarget(BallInfo targetBall) {
-        int index = targetBall.findIndex(this);
+    public int getIndexByNumber(int number) {
+        return toString().indexOf(String.valueOf(number));
+    }
+
+    public BallPiece getBallPieceByNumber(int number) {
+        int index = getIndexByNumber(number);
 
         if (index == -1) {
             return null;
         }
 
-        return ballList.get(index);
+        return pieces.get(index);
     }
 
     @Override

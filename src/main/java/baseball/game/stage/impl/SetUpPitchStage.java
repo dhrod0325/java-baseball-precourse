@@ -3,11 +3,11 @@ package baseball.game.stage.impl;
 import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.ObserveRequest;
 import baseball.game.stage.domain.GameConfig;
+import baseball.game.stage.domain.ObserveRequest;
 
-public class PitchSetUpStage extends AbstractStage {
-    public PitchSetUpStage(GameConfig config) {
+public class SetUpPitchStage extends AbstractStage {
+    public SetUpPitchStage(GameConfig config) {
         super(config);
     }
 

@@ -24,6 +24,7 @@ public class ScoreCalcStage extends AbstractStage {
         PitchWithSwingBall pitchWithSwingBall = request.getAttribute("pitchWithSwingBall");
 
         Score score = getReferee().calcScore(pitchWithSwingBall);
+
         getView().println(score.toString());
 
         if (!score.isThreeStrike()) {
@@ -32,6 +33,7 @@ public class ScoreCalcStage extends AbstractStage {
         }
 
         getView().println(Constants.MSG_SOLUTION);
+
         gameController.retryOrExit();
     }
 }
