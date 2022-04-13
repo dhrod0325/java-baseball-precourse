@@ -1,6 +1,6 @@
 package baseball.domain.service;
 
-import baseball.domain.Ball;
+import baseball.domain.object.Ball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputBallGenerator implements BallGenerator {

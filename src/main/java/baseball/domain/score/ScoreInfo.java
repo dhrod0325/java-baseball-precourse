@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.score;
 
 import baseball.domain.enums.PitchResult;
 
@@ -11,7 +11,7 @@ public class ScoreInfo {
         this.count = count;
     }
 
-    public void plusCount() {
+    void plusCount() {
         this.count += 1;
     }
 

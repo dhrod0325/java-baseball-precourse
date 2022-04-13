@@ -1,9 +1,9 @@
 package baseball.game.stage;
 
 import baseball.constant.Constants;
-import baseball.domain.Ball;
-import baseball.domain.BallContainer;
-import baseball.game.controller.GameController;
+import baseball.domain.object.Ball;
+import baseball.domain.object.BallContainer;
+import baseball.game.GameController;
 import baseball.game.domain.ObserveRequest;
 import baseball.game.enums.GameState;
 import baseball.game.domain.GameConfig;

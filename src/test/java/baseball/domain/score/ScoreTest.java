@@ -1,11 +1,15 @@
-package baseball.domain;
+package baseball.domain.score;
 
+import baseball.domain.object.Ball;
+import baseball.domain.object.BallContainer;
+import baseball.domain.object.Referee;
+import baseball.domain.object.RefereeImpl;
 import org.junit.jupiter.api.Test;
 
 import static baseball.domain.enums.PitchResult.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RefereeTest {
+public class ScoreTest {
     private final Referee referee = new RefereeImpl();
 
     public Score swing(String pitchInput, String swingInput) {

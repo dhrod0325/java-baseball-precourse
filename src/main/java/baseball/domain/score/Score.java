@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.score;
 
 import baseball.constant.Constants;
 import baseball.domain.enums.PitchResult;

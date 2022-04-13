@@ -1,7 +1,7 @@
-package baseball.game.controller;
+package baseball.game;
 
 import baseball.constant.Constants;
-import baseball.domain.*;
+import baseball.domain.object.*;
 import baseball.domain.service.InputBallGenerator;
 import baseball.domain.service.RandomBallGenerator;
 import baseball.game.domain.GameConfig;
@@ -9,6 +9,7 @@ import baseball.game.domain.ObserveRequest;
 import baseball.game.enums.GameState;
 import baseball.game.enums.RetryOrExit;
 import baseball.game.stage.*;
+import baseball.game.view.View;
 
 import java.util.Observable;
 
@@ -23,7 +24,7 @@ public class GameController extends Observable {
         Referee referee = new RefereeImpl();
 
         GameConfig config = new GameConfig.Builder()
-                .setView(new StageView())
+                .setView(new View())
                 .setPitcher(pitcher)
                 .setHitter(hitter)
                 .setReferee(referee)

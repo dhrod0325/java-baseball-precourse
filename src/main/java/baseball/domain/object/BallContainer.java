@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.object;
 
 public class BallContainer {
     final Ball pitchBall;

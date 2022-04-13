@@ -1,6 +1,6 @@
 package baseball.domain.service;
 
-import baseball.domain.Ball;
+import baseball.domain.object.Ball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

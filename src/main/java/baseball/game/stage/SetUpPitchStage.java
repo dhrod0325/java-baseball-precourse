@@ -1,6 +1,6 @@
 package baseball.game.stage;
 
-import baseball.game.controller.GameController;
+import baseball.game.GameController;
 import baseball.game.domain.ObserveRequest;
 import baseball.game.enums.GameState;
 import baseball.game.domain.GameConfig;

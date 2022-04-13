@@ -1,7 +1,7 @@
 package baseball.game.stage;
 
 import baseball.constant.Constants;
-import baseball.game.controller.GameController;
+import baseball.game.GameController;
 import baseball.game.domain.ObserveRequest;
 import baseball.game.enums.GameState;
 import baseball.game.enums.RetryOrExit;

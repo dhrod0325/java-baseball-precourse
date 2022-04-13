@@ -1,12 +1,12 @@
 package baseball.game.domain;
 
-import baseball.domain.Hitter;
-import baseball.domain.Pitcher;
-import baseball.domain.Referee;
-import baseball.game.stage.StageView;
+import baseball.domain.object.Hitter;
+import baseball.domain.object.Pitcher;
+import baseball.domain.object.Referee;
+import baseball.game.view.View;
 
 public class GameConfig {
-    private StageView view;
+    private View view;
     private Hitter hitter;
     private Pitcher pitcher;
     private Referee referee;
@@ -15,7 +15,7 @@ public class GameConfig {
         return referee;
     }
 
-    public StageView getView() {
+    public View getView() {
         return view;
     }
 
@@ -28,12 +28,12 @@ public class GameConfig {
     }
 
     public static class Builder {
-        private StageView view;
+        private View view;
         private Hitter hitter;
         private Pitcher pitcher;
         private Referee referee;
 
-        public Builder setView(StageView view) {
+        public Builder setView(View view) {
             this.view = view;
 
             return this;

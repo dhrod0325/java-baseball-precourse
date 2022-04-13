@@ -1,6 +1,7 @@
-package baseball.domain;
+package baseball.domain.object;
 
 import baseball.domain.enums.PitchResult;
+import baseball.domain.score.Score;
 
 import static baseball.domain.enums.PitchResult.*;
 

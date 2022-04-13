@@ -1,17 +1,17 @@
-package baseball.game.stage;
+package baseball.game.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class StageView {
-    String readLine() {
+public class View {
+    public String readLine() {
         return Console.readLine();
     }
 
-    void print(String str) {
+    public void print(String str) {
         System.out.print(str);
     }
 
-    void println(String str) {
+    public void println(String str) {
         System.out.println(str);
     }
 }

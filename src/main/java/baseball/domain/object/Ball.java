@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.object;
 
 import baseball.domain.validator.InputValidator;
 
@@ -17,7 +17,7 @@ public class Ball implements Iterable<BallPiece> {
         this.pieces = parsePieces(input);
     }
 
-    public BallPiece getPieceByNumber(int number) {
+    BallPiece getPieceByNumber(int number) {
         int index = input.indexOf(String.valueOf(number));
 
         if (index == -1) {
