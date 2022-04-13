@@ -1,16 +1,9 @@
 package baseball.game;
 
-import baseball.constant.Constants;
-import baseball.domain.object.*;
 import baseball.domain.ball.BallContainer;
-import baseball.domain.ball.generator.InputBallGenerator;
-import baseball.domain.ball.generator.RandomBallGenerator;
-import baseball.game.domain.GameConfig;
 import baseball.game.domain.ObserveRequest;
 import baseball.game.enums.GameState;
 import baseball.game.enums.RetryOrExit;
-import baseball.game.stage.*;
-import baseball.game.view.View;
 
 import java.util.Observable;
 
@@ -20,22 +13,6 @@ public class GameController extends Observable {
     private GameState gameState = GameState.PITCH_SETUP;
 
     public void run() {
-        Hitter hitter = new HitterImpl(new InputBallGenerator());
-        Pitcher pitcher = new PitcherImpl(new RandomBallGenerator(Constants.PITCH_LENGTH));
-        Referee referee = new RefereeImpl();
-
-        GameConfig config = new GameConfig.Builder()
-                .setView(new View())
-                .setPitcher(pitcher)
-                .setHitter(hitter)
-                .setReferee(referee)
-                .build();
-
-        addObserver(new SetUpPitchStage(config));
-        addObserver(new PitchAndSwingStage(config));
-        addObserver(new ScoreCalcStage(config));
-        addObserver(new RetryOrExitStage(config));
-
         notifyObservers();
     }
 
