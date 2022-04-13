@@ -9,16 +9,25 @@ import java.util.List;
 import java.util.Map;
 
 public class Score {
-    private final Map<PitchResult, ScoreInfo> scoreMap = new HashMap<>();
+    private final Map<PitchResult, Integer> scoreMap = new HashMap<>();
 
     public void addPitchResult(PitchResult pitchResult) {
-        ScoreInfo scoreInfo = scoreMap.getOrDefault(pitchResult, new ScoreInfo(pitchResult, 0));
-        scoreInfo.plusCount();
-        scoreMap.put(pitchResult, scoreInfo);
+        int count = getScoreCount(pitchResult);
+        scoreMap.put(pitchResult, count + 1);
     }
 
     public boolean isThreeStrike() {
         return isMaxCount(PitchResult.STRIKE);
+    }
+
+    public int getScoreCount(PitchResult pitchResult) {
+        Integer count = scoreMap.getOrDefault(pitchResult, 0);
+
+        if (count == null) {
+            return 0;
+        }
+
+        return count;
     }
 
     @Override
@@ -33,14 +42,6 @@ public class Score {
         return String.join(" ", result).trim();
     }
 
-    int getScoreCount(PitchResult pitchResult) {
-        ScoreInfo scoreInfo = scoreMap.get(pitchResult);
-        if (scoreInfo == null) {
-            return 0;
-        }
-        return scoreInfo.count;
-    }
-
     private boolean isMaxCount(PitchResult pitchResult) {
         return getScoreCount(pitchResult) == Constants.PITCH_LENGTH;
     }
@@ -48,10 +49,18 @@ public class Score {
     private List<String> stringList() {
         List<String> result = new ArrayList<>();
 
-        for (ScoreInfo score : scoreMap.values()) {
-            result.add(score.toString());
+        for (Map.Entry<PitchResult, Integer> entrySet : scoreMap.entrySet()) {
+            result.add(entryToString(entrySet));
         }
 
         return result;
+    }
+
+    private String entryToString(Map.Entry<PitchResult, Integer> entrySet) {
+        PitchResult pitchResult = entrySet.getKey();
+        if (pitchResult == PitchResult.NOTHING) {
+            return "";
+        }
+        return entrySet.getValue() + pitchResult.getName();
     }
 }
