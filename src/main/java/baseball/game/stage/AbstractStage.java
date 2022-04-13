@@ -1,35 +1,48 @@
 package baseball.game.stage;
 
-import baseball.enums.GameState;
-import baseball.game.controller.GameController;
-import baseball.game.stage.domain.StageData;
 import baseball.domain.object.Hitter;
 import baseball.domain.object.Pitcher;
+import baseball.domain.object.Referee;
+import baseball.enums.GameState;
+import baseball.game.GameController;
+import baseball.game.stage.domain.GameConfig;
+import baseball.game.stage.domain.ObserveRequest;
 import baseball.view.View;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public abstract class AbstractStage implements Observer {
-    private final StageData stageData;
+    private final GameConfig config;
 
-    public AbstractStage(StageData stageData) {
-        this.stageData = stageData;
+    public AbstractStage(GameConfig config) {
+        this.config = config;
     }
 
     public abstract GameState getStageRunningState();
 
-    public abstract void onUpdate(GameController gameController);
+    public abstract void onUpdate(GameController gameController, ObserveRequest request);
 
     @Override
     public void update(Observable o, Object arg) {
-        GameController gameController = (GameController) arg;
+        GameController gameController = (GameController) o;
+        ObserveRequest request = getObserveRequest(arg);
 
         if (isStageTurn(gameController)) {
             return;
         }
 
-        onUpdate(gameController);
+        onUpdate(gameController, request);
+    }
+
+    private ObserveRequest getObserveRequest(Object arg) {
+        ObserveRequest request = (ObserveRequest) arg;
+
+        if (request == null) {
+            request = new ObserveRequest();
+        }
+
+        return request;
     }
 
     private boolean isStageTurn(GameController gameController) {
@@ -37,14 +50,18 @@ public abstract class AbstractStage implements Observer {
     }
 
     protected View getView() {
-        return stageData.getView();
+        return config.getView();
     }
 
     protected Hitter getHitter() {
-        return stageData.getHitter();
+        return config.getHitter();
     }
 
     protected Pitcher getPitcher() {
-        return stageData.getPitcher();
+        return config.getPitcher();
+    }
+
+    protected Referee getReferee() {
+        return config.getReferee();
     }
 }

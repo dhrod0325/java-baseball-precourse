@@ -2,12 +2,18 @@ package baseball.game.stage.domain;
 
 import baseball.domain.object.Hitter;
 import baseball.domain.object.Pitcher;
+import baseball.domain.object.Referee;
 import baseball.view.View;
 
-public class StageData {
+public class GameConfig {
     private View view;
     private Hitter hitter;
     private Pitcher pitcher;
+    private Referee referee;
+
+    public Referee getReferee() {
+        return referee;
+    }
 
     public View getView() {
         return view;
@@ -25,6 +31,7 @@ public class StageData {
         private View view;
         private Hitter hitter;
         private Pitcher pitcher;
+        private Referee referee;
 
         public Builder setView(View view) {
             this.view = view;
@@ -42,11 +49,18 @@ public class StageData {
             return this;
         }
 
-        public StageData build() {
-            StageData stage = new StageData();
+        public Builder setReferee(Referee referee) {
+            this.referee = referee;
+
+            return this;
+        }
+
+        public GameConfig build() {
+            GameConfig stage = new GameConfig();
             stage.view = view;
             stage.pitcher = pitcher;
             stage.hitter = hitter;
+            stage.referee = referee;
 
             return stage;
         }

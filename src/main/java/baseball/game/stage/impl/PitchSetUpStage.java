@@ -1,13 +1,14 @@
 package baseball.game.stage.impl;
 
 import baseball.enums.GameState;
-import baseball.game.controller.GameController;
+import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.StageData;
+import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.stage.domain.GameConfig;
 
 public class PitchSetUpStage extends AbstractStage {
-    public PitchSetUpStage(StageData stage) {
-        super(stage);
+    public PitchSetUpStage(GameConfig config) {
+        super(config);
     }
 
     @Override
@@ -16,8 +17,9 @@ public class PitchSetUpStage extends AbstractStage {
     }
 
     @Override
-    public void onUpdate(GameController gameController) {
+    public void onUpdate(GameController gameController, ObserveRequest request) {
         getPitcher().setUpPitch();
-        gameController.setGameState(GameState.PITCH_WITH_SWING);
+
+        gameController.pitchWithSwing();
     }
 }

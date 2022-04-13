@@ -2,22 +2,22 @@ package baseball.enums;
 
 import baseball.constant.Constants;
 
-import static baseball.enums.GameState.PITCH_SETUP;
 import static baseball.enums.GameState.END_GAME;
+import static baseball.enums.GameState.PITCH_SETUP;
 
-public enum EndMenu {
-    EXIT(Constants.KEY_END_GAME, END_GAME),
-    RETRY(Constants.KEY_RETRY_GAME, PITCH_SETUP);
+public enum RetryOrExit {
+    RETRY(Constants.KEY_RETRY_GAME, PITCH_SETUP),
+    EXIT(Constants.KEY_END_GAME, END_GAME);
 
     final String name;
     final GameState state;
 
-    EndMenu(String name, GameState state) {
+    RetryOrExit(String name, GameState state) {
         this.name = name;
         this.state = state;
     }
 
-    public static EndMenu fromString(String name) {
+    public static RetryOrExit fromString(String name) {
         if (Constants.KEY_END_GAME.equals(name)) {
             return EXIT;
         }

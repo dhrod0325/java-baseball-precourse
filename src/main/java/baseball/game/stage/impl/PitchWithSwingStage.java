@@ -3,19 +3,17 @@ package baseball.game.stage.impl;
 import baseball.constant.Constants;
 import baseball.domain.ball.Ball;
 import baseball.domain.ball.PitchWithSwingBall;
-import baseball.domain.object.impl.RefereeImpl;
-import baseball.domain.score.Score;
 import baseball.enums.GameState;
-import baseball.game.controller.GameController;
+import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
-import baseball.game.stage.domain.StageData;
+import baseball.game.stage.domain.ObserveRequest;
+import baseball.game.stage.domain.GameConfig;
 
-import static baseball.enums.GameState.END_MENU;
 import static baseball.enums.GameState.PITCH_WITH_SWING;
 
 public class PitchWithSwingStage extends AbstractStage {
-    public PitchWithSwingStage(StageData stage) {
-        super(stage);
+    public PitchWithSwingStage(GameConfig config) {
+        super(config);
     }
 
     @Override
@@ -24,24 +22,12 @@ public class PitchWithSwingStage extends AbstractStage {
     }
 
     @Override
-    public void onUpdate(GameController gameController) {
+    public void onUpdate(GameController gameController, ObserveRequest request) {
         getView().print(Constants.MSG_INPUT);
 
-        PitchWithSwingBall pitchWithSwingBall = pitchWithSwing();
-
-        Score scores = new RefereeImpl().calcScore(pitchWithSwingBall);
-
-        getView().println(scores.toString());
-
-        if (scores.isThreeStrike()) {
-            getView().println(Constants.MSG_SOLUTION);
-            gameController.setGameState(END_MENU);
-        }
-    }
-
-    public PitchWithSwingBall pitchWithSwing() {
         Ball pitch = getPitcher().pitch();
+        PitchWithSwingBall pitchWithSwingBall = getHitter().swing(pitch);
 
-        return getHitter().swing(pitch);
+        gameController.calcScore(pitchWithSwingBall);
     }
 }
