@@ -7,7 +7,7 @@ import baseball.enums.GameState;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
 import baseball.game.domain.GameConfig;
-import baseball.game.domain.ObserveRequest;
+import baseball.game.stage.ObserveRequest;
 
 import static baseball.enums.GameState.PITCH_WITH_SWING;
 

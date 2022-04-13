@@ -5,9 +5,9 @@ import baseball.domain.ball.PitchWithSwingBall;
 import baseball.domain.score.Score;
 import baseball.enums.GameState;
 import baseball.game.GameController;
-import baseball.game.stage.AbstractStage;
 import baseball.game.domain.GameConfig;
-import baseball.game.domain.ObserveRequest;
+import baseball.game.stage.ObserveRequest;
+import baseball.game.stage.AbstractStage;
 
 public class ScoreCalcStage extends AbstractStage {
     public ScoreCalcStage(GameConfig config) {
@@ -27,13 +27,27 @@ public class ScoreCalcStage extends AbstractStage {
 
         getView().println(score.toString());
 
-        if (!score.isThreeStrike()) {
-            gameController.loadPitchWithSwingStage();
+        boolean isThreeStrike = score.isThreeStrike();
+
+        ifNotThreeStrikeThenLoadPitchWithSwingStage(isThreeStrike, gameController);
+
+        ifThreeStrikeThenLoadRetryOrExitStage(isThreeStrike, gameController);
+    }
+
+    private void ifThreeStrikeThenLoadRetryOrExitStage(boolean isThreeStrike, GameController gameController) {
+        if (!isThreeStrike) {
             return;
         }
 
         getView().println(Constants.MSG_SOLUTION);
-
         gameController.loadRetryOrExitStage();
+    }
+
+    private void ifNotThreeStrikeThenLoadPitchWithSwingStage(boolean isThreeStrike, GameController gameController) {
+        if (isThreeStrike) {
+            return;
+        }
+
+        gameController.loadPitchWithSwingStage();
     }
 }

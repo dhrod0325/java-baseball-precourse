@@ -3,7 +3,7 @@ package baseball.game;
 import baseball.domain.ball.PitchWithSwingBall;
 import baseball.enums.GameState;
 import baseball.enums.RetryOrExit;
-import baseball.game.domain.ObserveRequest;
+import baseball.game.stage.ObserveRequest;
 
 import java.util.Observable;
 

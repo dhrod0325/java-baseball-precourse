@@ -6,7 +6,7 @@ import baseball.enums.RetryOrExit;
 import baseball.game.GameController;
 import baseball.game.stage.AbstractStage;
 import baseball.game.domain.GameConfig;
-import baseball.game.domain.ObserveRequest;
+import baseball.game.stage.ObserveRequest;
 
 import static baseball.enums.GameState.RETRY_OR_EXIT;
 
