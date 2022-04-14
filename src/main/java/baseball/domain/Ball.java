@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Ball implements Iterable<BallPiece> {
+public class Ball implements Iterable<Ball.BallPiece> {
     private final List<BallPiece> pieces;
     private final String input;
 
@@ -34,6 +34,17 @@ public class Ball implements Iterable<BallPiece> {
         return result;
     }
 
+    public List<String> checkScore(Ball swingBall) {
+        List<String> list = new ArrayList<>();
+
+        for (BallPiece pitchBallPiece : this) {
+            String pitchResult = pitchBallPiece.checkPitchResult(swingBall);
+            list.add(pitchResult);
+        }
+
+        return list;
+    }
+
     @Override
     public Iterator<BallPiece> iterator() {
         return pieces.iterator();
@@ -44,4 +55,27 @@ public class Ball implements Iterable<BallPiece> {
         return input;
     }
 
+    public static class BallPiece {
+        private final int number;
+        private final int position;
+
+        public BallPiece(int number, int position) {
+            this.number = number;
+            this.position = position;
+        }
+
+        public String checkPitchResult(Ball swingBall) {
+            BallPiece ballPiece = swingBall.getPieceByNumber(number);
+
+            if (ballPiece == null) {
+                return Score.NOTHING;
+            }
+
+            if (ballPiece.position == position) {
+                return Score.STRIKE;
+            }
+
+            return Score.BALL;
+        }
+    }
 }

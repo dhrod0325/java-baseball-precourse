@@ -2,7 +2,6 @@ package baseball.game.ballgen;
 
 import baseball.domain.Ball;
 import baseball.domain.BallGenerator;
-import baseball.domain.BallPiece;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,8 +32,8 @@ public class BallGeneratorTest {
         Ball ball = new Ball("123");
 
         Assertions.assertEquals(ball.toString(), "123");
-        Assertions.assertEquals(ball.getPieceByNumber(1).toString(), new BallPiece(1, 0).toString());
-        Assertions.assertEquals(ball.getPieceByNumber(2).toString(), new BallPiece(2, 1).toString());
-        Assertions.assertEquals(ball.getPieceByNumber(3).toString(), new BallPiece(3, 2).toString());
+        Assertions.assertEquals(ball.getPieceByNumber(1).toString(), new Ball.BallPiece(1, 0).toString());
+        Assertions.assertEquals(ball.getPieceByNumber(2).toString(), new Ball.BallPiece(2, 1).toString());
+        Assertions.assertEquals(ball.getPieceByNumber(3).toString(), new Ball.BallPiece(3, 2).toString());
     }
 }
