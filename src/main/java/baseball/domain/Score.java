@@ -29,7 +29,7 @@ public class Score {
         return getScoreCount(STRIKE) == ballSize;
     }
 
-    private boolean isNothing() {
+    public boolean isNothing() {
         return getScoreCount(NOTHING) == ballSize;
     }
 
@@ -48,7 +48,6 @@ public class Score {
         for (Map.Entry<String, Integer> entrySet : scoreMap.entrySet()) {
             String pitchResult = entrySet.getKey();
             Integer count = entrySet.getValue();
-
             result.add(count + "" + pitchResult);
         }
 
