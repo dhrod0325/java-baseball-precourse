@@ -37,22 +37,17 @@ public class Score {
             return NOTHING;
         }
 
-        List<String> result = stringList();
+        List<String> result = convertToString();
         result.sort(String::compareTo);
 
         return String.join(" ", result).trim();
     }
 
-    private List<String> stringList() {
+    private List<String> convertToString() {
         List<String> result = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entrySet : scoreMap.entrySet()) {
             String pitchResult = entrySet.getKey();
-
-            if (NOTHING.equals(pitchResult)) {
-                continue;
-            }
-
             Integer count = entrySet.getValue();
             result.add(count + "" + pitchResult);
         }
