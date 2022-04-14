@@ -35,6 +35,7 @@ public class GameController {
 
         if (!score.isThreeStrike()) {
             scoreCheck();
+            return;
         }
 
         System.out.println(MSG_SOLUTION);
