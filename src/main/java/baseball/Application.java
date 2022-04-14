@@ -1,37 +1,24 @@
 package baseball;
 
-import baseball.constant.Constants;
 import baseball.domain.ball.generator.InputBallGenerator;
 import baseball.domain.ball.generator.RandomBallGenerator;
-import baseball.domain.object.*;
+import baseball.domain.object.Player;
+import baseball.domain.object.PlayerImpl;
+import baseball.domain.object.Referee;
+import baseball.domain.object.RefereeImpl;
+import baseball.domain.score.Score;
+import baseball.domain.service.GameService;
 import baseball.game.GameController;
-import baseball.game.domain.GameConfig;
-import baseball.game.stage.PitchAndSwingStage;
-import baseball.game.stage.RetryOrExitStage;
-import baseball.game.stage.ScoreCalcStage;
-import baseball.game.stage.SetUpPitchStage;
-import baseball.game.view.View;
 
 public class Application {
     public static void main(String[] args) {
-        GameController gameController = new GameController();
-
-        Hitter hitter = new HitterImpl(new InputBallGenerator());
-        Pitcher pitcher = new PitcherImpl(new RandomBallGenerator(Constants.PITCH_LENGTH));
+        Player hitter = new PlayerImpl(new InputBallGenerator());
+        Player pitcher = new PlayerImpl(new RandomBallGenerator(Score.BALL_LENGTH));
         Referee referee = new RefereeImpl();
 
-        GameConfig config = new GameConfig.Builder()
-                .setView(new View())
-                .setPitcher(pitcher)
-                .setHitter(hitter)
-                .setReferee(referee)
-                .build();
+        GameService gameService = new GameService(pitcher, hitter, referee);
 
-        gameController.addObserver(new SetUpPitchStage(config));
-        gameController.addObserver(new PitchAndSwingStage(config));
-        gameController.addObserver(new ScoreCalcStage(config));
-        gameController.addObserver(new RetryOrExitStage(config));
-
-        gameController.run();
+        GameController gameController = new GameController(gameService);
+        gameController.start();
     }
 }

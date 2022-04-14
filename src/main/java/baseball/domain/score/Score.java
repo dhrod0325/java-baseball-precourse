@@ -1,36 +1,40 @@
 package baseball.domain.score;
 
-import baseball.domain.enums.PitchResult;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.constant.Constants.PITCH_LENGTH;
-import static baseball.domain.enums.PitchResult.NOTHING;
-import static baseball.domain.enums.PitchResult.STRIKE;
-
 public class Score {
-    private final Map<PitchResult, Integer> scoreMap = new HashMap<>();
+    public static final int BALL_LENGTH = 3;
 
-    public void addPitchResult(PitchResult pitchResult) {
+    public static final String STRIKE = "스트라이크";
+    public static final String NOTHING = "낫싱";
+    public static final String BALL = "볼";
+
+    private final Map<String, Integer> scoreMap = new HashMap<>();
+
+    public void addPitchResult(String pitchResult) {
         int count = getScoreCount(pitchResult);
         scoreMap.put(pitchResult, count + 1);
     }
 
     public boolean isThreeStrike() {
-        return isMaxCount(STRIKE);
+        return getScoreCount(Score.STRIKE) == BALL_LENGTH;
     }
 
-    public int getScoreCount(PitchResult pitchResult) {
+    private boolean isNothing() {
+        return getScoreCount(NOTHING) == BALL_LENGTH;
+    }
+
+    public int getScoreCount(String pitchResult) {
         return scoreMap.getOrDefault(pitchResult, 0);
     }
 
     @Override
     public String toString() {
-        if (isMaxCount(NOTHING)) {
-            return NOTHING.getName();
+        if (isNothing()) {
+            return NOTHING;
         }
 
         List<String> result = stringList();
@@ -39,17 +43,18 @@ public class Score {
         return String.join(" ", result).trim();
     }
 
-    private boolean isMaxCount(PitchResult pitchResult) {
-        return getScoreCount(pitchResult) == PITCH_LENGTH;
-    }
-
     private List<String> stringList() {
         List<String> result = new ArrayList<>();
 
-        for (Map.Entry<PitchResult, Integer> entrySet : scoreMap.entrySet()) {
-            PitchResult pitchResult = entrySet.getKey();
+        for (Map.Entry<String, Integer> entrySet : scoreMap.entrySet()) {
+            String pitchResult = entrySet.getKey();
+
+            if (NOTHING.equals(pitchResult)) {
+                continue;
+            }
+
             Integer count = entrySet.getValue();
-            result.add(pitchResult.toString(count));
+            result.add(count + "" + pitchResult);
         }
 
         return result;

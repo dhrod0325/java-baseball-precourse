@@ -1,7 +1,7 @@
 package baseball.domain.validator;
 
-import baseball.constant.Constants;
 import baseball.domain.ball.generator.BallGenerator;
+import baseball.domain.score.Score;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -48,13 +48,13 @@ public class InputValidator {
     private static void validateDuplicateLetter(String input) {
         Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
 
-        if (stringSet.size() != Constants.PITCH_LENGTH) {
+        if (stringSet.size() != Score.BALL_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private static void validateLength(String input) {
-        if (input.length() != Constants.PITCH_LENGTH) {
+        if (input.length() != Score.BALL_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
