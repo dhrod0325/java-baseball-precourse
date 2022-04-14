@@ -1,9 +1,6 @@
-package baseball.domain.score;
+package baseball.domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Score {
     public static final String STRIKE = "스트라이크";
@@ -20,6 +17,12 @@ public class Score {
     public void addScore(String pitchResult) {
         int count = getScoreCount(pitchResult);
         scoreMap.put(pitchResult, count + 1);
+    }
+
+    public void addAll(Collection<String> pitchResults) {
+        for (String pitchResult : pitchResults) {
+            addScore(pitchResult);
+        }
     }
 
     public boolean isThreeStrike() {

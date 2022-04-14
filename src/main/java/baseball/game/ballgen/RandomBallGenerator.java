@@ -1,7 +1,7 @@
 package baseball.game.ballgen;
 
-import baseball.domain.ball.Ball;
-import baseball.domain.ball.BallGenerator;
+import baseball.domain.Ball;
+import baseball.domain.BallGenerator;
 import baseball.game.utils.RandomUtils;
 
 import java.util.HashSet;

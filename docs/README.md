@@ -84,6 +84,20 @@ ifThreeStrikeThenLoadRetryOrExitStage(isThreeStrike, gameController);
     - 다른 패키지에서 테스트를 진행하니 private 메소드가 테스트 때문에 public으로 바꿔야 하는 문제점이 있음
     - 같은 패키지에 위치하면 private-package 접근 제어자로 캡슐화를 제한하는 장점이 있음
 
+### 4월 13일 로직 재구성
+
+클래스 구성 변경 기존 -> Ball(공),Balls(공3),Bat(방망이),Computer(컴퓨터),Player 게임 진행 유저 = Player -> Hitter, Pitcher (투수,타자로 변경)
+점수 계산 = Referee(심판이 계산함)
+
+### 4월 14일 리팩토링
+
+- 의존관계를 재구성하기 위해 옵저버 패턴에서 의존되는 부분들을 삭제하다 보니 자연스래 옵저버패턴이 삭제 되어버림. 생각해보니 처음부터 잘못 만들었던거 같음
+- 의존관계를 정리하고나니 자연스래 MVC패턴 모양으로 변경됨
+- 전역으로 쓰던 Constant 클래스도 그냥 각각의 클래스에 상수로 선언하니 코드 읽기가 훨신 편해짐
+- 게임 패키지에서 최대한 도메인 패키지에 접근할 수 없게 노력해봄 
+- 컨트롤러에서 계산하던 점수 로직을 서비스로 분리하니 구조가 훨씬 단순해짐
+
+
 ### 기능 요구사항
 
 - 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
@@ -122,7 +136,4 @@ ifThreeStrikeThenLoadRetryOrExitStage(isThreeStrike, gameController);
     - [x]  정답확인 스테이지
         - [x] 단위 테스트 작성
 
-### 4월 13일 로직 재구성
 
-클래스 구성 변경 기존 -> Ball(공),Balls(공3),Bat(방망이),Computer(컴퓨터),Player 게임 진행 유저 = Player -> Hitter, Pitcher (투수,타자로 변경)
-점수 계산 = Referee(심판이 계산함)

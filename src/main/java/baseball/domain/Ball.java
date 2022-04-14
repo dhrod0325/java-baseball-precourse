@@ -1,4 +1,4 @@
-package baseball.domain.ball;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,4 +43,5 @@ public class Ball implements Iterable<BallPiece> {
     public String toString() {
         return input;
     }
+
 }

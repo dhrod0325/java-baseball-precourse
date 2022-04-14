@@ -1,8 +1,8 @@
 package baseball.game.ballgen;
 
-import baseball.domain.ball.Ball;
-import baseball.domain.ball.BallGenerator;
-import baseball.domain.ball.BallPiece;
+import baseball.domain.Ball;
+import baseball.domain.BallGenerator;
+import baseball.domain.BallPiece;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

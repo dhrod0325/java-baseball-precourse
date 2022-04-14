@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.domain.service.GameService;
+import baseball.service.GameService;
 import baseball.game.utils.UiUtils;
 
 import java.util.function.Consumer;

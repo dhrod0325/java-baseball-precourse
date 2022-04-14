@@ -1,4 +1,4 @@
-package baseball.domain.ball;
+package baseball.domain;
 
 public interface BallGenerator {
     Ball generate();

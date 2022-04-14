@@ -1,12 +1,10 @@
-package baseball.domain.service;
+package baseball.service;
 
-import baseball.domain.ball.Ball;
-import baseball.domain.ball.BallValidator;
-import baseball.domain.object.Player;
-import baseball.domain.object.Referee;
-import baseball.domain.score.Score;
+import baseball.domain.*;
 
 import java.util.function.Consumer;
+
+import static baseball.game.config.Config.BALL_SIZE;
 
 public class GameService {
     public static final String ERROR_NOT_INIT_PITCH = "투수가 준비되지 않았습니다. setUp() 메소드를 호출하세요.";
@@ -51,8 +49,12 @@ public class GameService {
         if (this.pitchBall == null)
             throw new RuntimeException(ERROR_NOT_INIT_PITCH);
 
+        Score score = new Score(BALL_SIZE);
+
         Ball swingBall = validate(hitter.generateBall());
-        return referee.calcScore(pitchBall, swingBall);
+        score.addAll(referee.calcScore(pitchBall, swingBall));
+
+        return score;
     }
 
     private Ball validate(Ball ball) {

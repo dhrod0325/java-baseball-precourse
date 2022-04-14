@@ -1,5 +1,7 @@
 package baseball.domain.ball;
 
+import baseball.domain.Ball;
+import baseball.domain.BallValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
