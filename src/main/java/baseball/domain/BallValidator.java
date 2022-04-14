@@ -1,7 +1,7 @@
 package baseball.domain;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class BallValidator {
@@ -33,7 +33,7 @@ public class BallValidator {
     }
 
     private void validateMinMax(String input) {
-        Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
+        Set<String> stringSet = new LinkedHashSet<>(Arrays.asList(input.split("")));
 
         for (String letter : stringSet) {
             int letterNumber = Integer.parseInt(letter);
@@ -63,7 +63,7 @@ public class BallValidator {
     }
 
     private void validateDuplicateLetter(String input) {
-        Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
+        Set<String> stringSet = new LinkedHashSet<>(Arrays.asList(input.split("")));
 
         if (stringSet.size() != minLength) {
             throw new IllegalArgumentException(INVALID_DUPLICATE);

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +22,7 @@ public class BallGeneratorTest {
 
         for (int i = 0; i < 1000; i++) {
             Ball ball = randomBallGenerator.generate();
-            Set<String> set = new HashSet<>(Arrays.asList(ball.toString().split("")));
+            Set<String> set = new LinkedHashSet<>(Arrays.asList(ball.toString().split("")));
             assertEquals(set.size(), length);
         }
     }

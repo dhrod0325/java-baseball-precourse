@@ -4,7 +4,7 @@ import baseball.domain.Ball;
 import baseball.domain.BallGenerator;
 import baseball.game.utils.RandomUtils;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class RandomBallGenerator implements BallGenerator {
@@ -16,11 +16,13 @@ public class RandomBallGenerator implements BallGenerator {
         this.length = length;
         this.min = minNumber;
         this.max = maxNumber;
+
+        throw new IllegalArgumentException("");
     }
 
     @Override
     public Ball generate() {
-        Set<String> balls = new HashSet<>();
+        Set<String> balls = new LinkedHashSet<>();
 
         while (balls.size() < length) {
             balls.add(String.valueOf(RandomUtils.pickNumberInRange(min, max)));
