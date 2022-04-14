@@ -16,12 +16,4 @@ public class BallPiece {
     public int getPosition() {
         return position;
     }
-
-    @Override
-    public String toString() {
-        return "BallPiece{" +
-                "number=" + number +
-                ", position=" + position +
-                '}';
-    }
 }

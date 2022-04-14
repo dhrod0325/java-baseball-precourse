@@ -6,6 +6,7 @@ public class Message {
     public static final String MSG_SELECT_END_MENU = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
     public static final String KEY_RETRY = "1";
     public static final String KEY_EXIT = "2";
+
     private Message() {
         throw new RuntimeException();
     }

@@ -27,11 +27,11 @@ public class GameController {
     }
 
     private void checkScore() {
-        Consumer<Void> before = x -> UiUtils.println(MSG_INPUT);
-        Consumer<String> after = UiUtils::println;
-        Consumer<Void> complete = score -> UiUtils.println(MSG_SOLUTION);
+        Consumer<Void> calcBefore = x -> UiUtils.println(MSG_INPUT);
+        Consumer<String> calcResult = UiUtils::println;
+        Consumer<Void> calcComplete = score -> UiUtils.println(MSG_SOLUTION);
 
-        gameService.checkScore(before, after, complete);
+        gameService.checkScore(calcBefore, calcResult, calcComplete);
     }
 
     private void reStart() {

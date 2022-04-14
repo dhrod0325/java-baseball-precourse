@@ -34,14 +34,6 @@ public class GameService {
         this.pitchBall = validate(pitcher.generateBall());
     }
 
-    public Score checkScore() {
-        if (this.pitchBall == null)
-            throw new RuntimeException(ERROR_NOT_INIT_PITCH);
-
-        Ball swingBall = validate(hitter.generateBall());
-        return referee.calcScore(pitchBall, swingBall);
-    }
-
     public void checkScore(Consumer<Void> before, Consumer<String> after, Consumer<Void> complete) {
         before.accept(null);
         Score score = checkScore();
@@ -53,6 +45,14 @@ public class GameService {
         }
 
         complete.accept(null);
+    }
+
+    private Score checkScore() {
+        if (this.pitchBall == null)
+            throw new RuntimeException(ERROR_NOT_INIT_PITCH);
+
+        Ball swingBall = validate(hitter.generateBall());
+        return referee.calcScore(pitchBall, swingBall);
     }
 
     private Ball validate(Ball ball) {
