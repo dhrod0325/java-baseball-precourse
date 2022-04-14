@@ -18,7 +18,7 @@ public class BallGeneratorTest {
     public void 테스트_중복없는_난수생성() {
         int length = 3;
 
-        BallGenerator randomBallGenerator = new RandomBallGenerator(length);
+        BallGenerator randomBallGenerator = new RandomBallGenerator(3, 0, 9);
 
         for (int i = 0; i < 1000; i++) {
             Ball ball = randomBallGenerator.generate();

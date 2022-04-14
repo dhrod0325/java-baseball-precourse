@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Score {
-    public static final int BALL_LENGTH = 3;
-
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";
+
+    public static final int BALL_SIZE = 3;
 
     private final Map<String, Integer> scoreMap = new HashMap<>();
 
@@ -20,11 +20,11 @@ public class Score {
     }
 
     public boolean isThreeStrike() {
-        return getScoreCount(Score.STRIKE) == BALL_LENGTH;
+        return getScoreCount(STRIKE) == BALL_SIZE;
     }
 
     private boolean isNothing() {
-        return getScoreCount(NOTHING) == BALL_LENGTH;
+        return getScoreCount(NOTHING) == BALL_SIZE;
     }
 
     public int getScoreCount(String pitchResult) {
