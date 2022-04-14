@@ -5,6 +5,8 @@ import baseball.domain.object.Player;
 import baseball.domain.object.Referee;
 import baseball.domain.score.Score;
 
+import java.util.function.Consumer;
+
 public class GameService {
     private final Player pitcher;
     private final Player hitter;
@@ -22,9 +24,21 @@ public class GameService {
         this.pitchBall = pitcher.generateBall();
     }
 
-    public Score calcScore() {
+    public Score checkScore() {
         Ball swingBall = hitter.generateBall();
-
         return referee.calcScore(pitchBall, swingBall);
+    }
+
+    public void checkScore(Consumer<Void> before, Consumer<Score> after, Consumer<Score> complete) {
+        before.accept(null);
+        Score score = checkScore();
+        after.accept(score);
+
+        if (!score.isThreeStrike()) {
+            checkScore(before, after, complete);
+            return;
+        }
+
+        complete.accept(score);
     }
 }

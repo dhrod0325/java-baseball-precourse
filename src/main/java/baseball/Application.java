@@ -21,4 +21,5 @@ public class Application {
         GameController gameController = new GameController(gameService);
         gameController.start();
     }
+
 }
