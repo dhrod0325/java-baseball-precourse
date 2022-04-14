@@ -1,7 +1,10 @@
 package baseball.game;
 
+import baseball.domain.score.Score;
 import baseball.domain.service.GameService;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.function.Consumer;
 
 public class GameController {
     public static final String MSG_INPUT = "숫자를 입력해주세요:";
@@ -28,11 +31,11 @@ public class GameController {
     }
 
     private void checkScore() {
-        gameService.checkScore(
-                sc -> System.out.println(MSG_INPUT),
-                System.out::println,
-                score -> System.out.println(MSG_SOLUTION)
-        );
+        Consumer<Void> before = x -> System.out.println(MSG_INPUT);
+        Consumer<Score> after = System.out::println;
+        Consumer<Score> complete = score -> System.out.println(MSG_SOLUTION);
+
+        gameService.checkScore(before, after, complete);
     }
 
     private void reStart() {
