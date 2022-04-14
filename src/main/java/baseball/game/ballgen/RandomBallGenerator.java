@@ -16,8 +16,6 @@ public class RandomBallGenerator implements BallGenerator {
         this.length = length;
         this.min = minNumber;
         this.max = maxNumber;
-
-        throw new IllegalArgumentException("");
     }
 
     @Override
