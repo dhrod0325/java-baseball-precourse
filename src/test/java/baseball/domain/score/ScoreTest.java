@@ -9,7 +9,7 @@ import static baseball.domain.score.Score.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScoreTest {
-    private final Referee referee = new RefereeImpl();
+    private final Referee referee = new RefereeImpl(3);
 
     public Score swing(String pitchInput, String swingInput) {
         return referee.calcScore(new Ball(pitchInput), new Ball(swingInput));

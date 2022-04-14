@@ -9,6 +9,9 @@ import baseball.domain.score.Score;
 import java.util.function.Consumer;
 
 public class GameService {
+    public static final String ERROR_NOT_INIT_PITCH = "투수가 준비되지 않았습니다. setUp() 메소드를 호출하세요.";
+    public static final String ERROR_NOT_INIT_VALIDATOR = "Validator가 설정되지 않았습니다.";
+
     private final Player pitcher;
     private final Player hitter;
     private final Referee referee;
@@ -28,11 +31,14 @@ public class GameService {
     }
 
     public void setUp() {
-        this.pitchBall = ballValidator.validate(pitcher.generateBall());
+        this.pitchBall = validate(pitcher.generateBall());
     }
 
     public Score checkScore() {
-        Ball swingBall = ballValidator.validate(hitter.generateBall());
+        if (this.pitchBall == null)
+            throw new RuntimeException(ERROR_NOT_INIT_PITCH);
+
+        Ball swingBall = validate(hitter.generateBall());
         return referee.calcScore(pitchBall, swingBall);
     }
 
@@ -47,5 +53,13 @@ public class GameService {
         }
 
         complete.accept(null);
+    }
+
+    private Ball validate(Ball ball) {
+        if (ballValidator == null) {
+            throw new RuntimeException(ERROR_NOT_INIT_VALIDATOR);
+        }
+
+        return ballValidator.validate(ball);
     }
 }

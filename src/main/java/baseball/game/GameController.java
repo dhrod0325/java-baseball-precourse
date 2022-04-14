@@ -1,7 +1,7 @@
 package baseball.game;
 
 import baseball.domain.service.GameService;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.game.utils.UiUtils;
 
 import java.util.function.Consumer;
 
@@ -27,17 +27,17 @@ public class GameController {
     }
 
     private void checkScore() {
-        Consumer<Void> before = x -> System.out.println(MSG_INPUT);
-        Consumer<String> after = System.out::println;
-        Consumer<Void> complete = score -> System.out.println(MSG_SOLUTION);
+        Consumer<Void> before = x -> UiUtils.println(MSG_INPUT);
+        Consumer<String> after = UiUtils::println;
+        Consumer<Void> complete = score -> UiUtils.println(MSG_SOLUTION);
 
         gameService.checkScore(before, after, complete);
     }
 
     private void reStart() {
-        System.out.println(MSG_SELECT_END_MENU);
+        UiUtils.println(MSG_SELECT_END_MENU);
 
-        String key = Console.readLine();
+        String key = UiUtils.readLine();
 
         boolean isRetry = KEY_RETRY.equals(key);
         boolean isExit = KEY_EXIT.equals(key);

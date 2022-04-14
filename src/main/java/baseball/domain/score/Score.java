@@ -10,21 +10,24 @@ public class Score {
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";
 
-    public static final int BALL_SIZE = 3;
-
+    private final int ballSize;
     private final Map<String, Integer> scoreMap = new HashMap<>();
 
-    public void addPitchResult(String pitchResult) {
+    public Score(int ballSize) {
+        this.ballSize = ballSize;
+    }
+
+    public void addScore(String pitchResult) {
         int count = getScoreCount(pitchResult);
         scoreMap.put(pitchResult, count + 1);
     }
 
     public boolean isThreeStrike() {
-        return getScoreCount(STRIKE) == BALL_SIZE;
+        return getScoreCount(STRIKE) == ballSize;
     }
 
     private boolean isNothing() {
-        return getScoreCount(NOTHING) == BALL_SIZE;
+        return getScoreCount(NOTHING) == ballSize;
     }
 
     public int getScoreCount(String pitchResult) {

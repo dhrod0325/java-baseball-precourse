@@ -1,7 +1,7 @@
 package baseball.domain.object;
 
 import baseball.domain.ball.Ball;
-import baseball.domain.ball.generator.BallGenerator;
+import baseball.domain.ball.BallGenerator;
 
 public class PlayerImpl implements Player {
     private final BallGenerator ballGenerator;

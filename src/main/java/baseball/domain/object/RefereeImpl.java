@@ -5,13 +5,19 @@ import baseball.domain.ball.BallPiece;
 import baseball.domain.score.Score;
 
 public class RefereeImpl implements Referee {
+    private final int ballSize;
+
+    public RefereeImpl(int ballSize) {
+        this.ballSize = ballSize;
+    }
+
     @Override
     public Score calcScore(Ball swingBall, Ball pitchBall) {
-        Score score = new Score();
+        Score score = new Score(ballSize);
 
         for (BallPiece pitchBallPiece : pitchBall) {
             String pitchResult = checkPitchResult(swingBall, pitchBallPiece);
-            score.addPitchResult(pitchResult);
+            score.addScore(pitchResult);
         }
 
         return score;
