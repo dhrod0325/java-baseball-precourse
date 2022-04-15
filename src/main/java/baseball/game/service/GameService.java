@@ -14,7 +14,7 @@ public class GameService {
 
     private BallValidator ballValidator;
 
-    private int ballSize;
+    private final int ballSize;
 
     public GameService(Player pitcher, Player hitter, Referee referee, int ballSize) {
         this.pitcher = pitcher;

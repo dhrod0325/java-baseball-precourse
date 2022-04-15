@@ -6,12 +6,14 @@ import baseball.game.view.GameView;
 import java.util.function.Consumer;
 
 public class GameController {
-    public static final String KEY_RETRY = "1";
-    public static final String KEY_EXIT = "2";
+    private final String retryKey;
+    private final String exitKey;
 
     private final GameService gameService;
 
-    public GameController(GameService gameService) {
+    public GameController(String retryKey, String exitKey, GameService gameService) {
+        this.retryKey = retryKey;
+        this.exitKey = exitKey;
         this.gameService = gameService;
     }
 
@@ -40,8 +42,8 @@ public class GameController {
 
         String key = GameView.input();
 
-        boolean isRetry = KEY_RETRY.equals(key);
-        boolean isExit = KEY_EXIT.equals(key);
+        boolean isRetry = retryKey.equals(key);
+        boolean isExit = exitKey.equals(key);
 
         if (isRetry) {
             start();
