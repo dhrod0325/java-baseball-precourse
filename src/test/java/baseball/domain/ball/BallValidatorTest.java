@@ -1,11 +1,11 @@
 package baseball.domain.ball;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import baseball.domain.Ball;
 import baseball.domain.BallValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BallValidatorTest {
     @ParameterizedTest

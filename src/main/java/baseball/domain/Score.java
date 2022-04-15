@@ -1,6 +1,10 @@
 package baseball.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Score {
     public static final String STRIKE = "스트라이크";

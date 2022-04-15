@@ -1,7 +1,10 @@
 package baseball.game.service;
 
-import baseball.domain.*;
-
+import baseball.domain.Ball;
+import baseball.domain.BallValidator;
+import baseball.domain.Player;
+import baseball.domain.Referee;
+import baseball.domain.Score;
 import java.util.Objects;
 import java.util.function.Consumer;
 

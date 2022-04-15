@@ -1,14 +1,15 @@
 package baseball.domain.score;
 
-import baseball.domain.Ball;
-import baseball.domain.Score;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
-import static baseball.domain.Score.*;
+import static baseball.domain.Score.BALL;
+import static baseball.domain.Score.NOTHING;
+import static baseball.domain.Score.STRIKE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import baseball.domain.Ball;
+import baseball.domain.Score;
+import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 public class ScoreTest {
     public Score getScore(String pitchInput, String swingInput) {

@@ -2,7 +2,6 @@ package baseball.game.controller;
 
 import baseball.game.service.GameService;
 import baseball.game.view.GameView;
-
 import java.util.function.Consumer;
 
 public class GameController {

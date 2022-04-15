@@ -1,6 +1,13 @@
 package baseball.game.service;
 
-import baseball.domain.*;
+import baseball.domain.Ball;
+import baseball.domain.BallGenerator;
+import baseball.domain.BallValidator;
+import baseball.domain.Player;
+import baseball.domain.PlayerImpl;
+import baseball.domain.Referee;
+import baseball.domain.RefereeImpl;
+import baseball.domain.Score;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,13 +43,15 @@ public class GameServiceTest {
 
     @Test
     public void 테스트_벨리데이터_NULL_체크() {
-        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee)
+                .setBallSize(ballSize).build();
         Assertions.assertThrows(NullPointerException.class, () -> gameService.setUp());
     }
 
     @Test
     public void 테스트_셋업호출체크() {
-        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee)
+                .setBallSize(ballSize).build();
         gameService.setBallValidator(ballValidator);
 
         Assertions.assertThrows(NullPointerException.class, () -> {
@@ -55,7 +64,8 @@ public class GameServiceTest {
 
     @Test
     public void 테스트_스코어검사() {
-        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee)
+                .setBallSize(ballSize).build();
         gameService.setBallValidator(ballValidator);
         gameService.setUp();
 

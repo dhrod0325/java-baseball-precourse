@@ -1,6 +1,5 @@
 package baseball.game.service;
 
-import baseball.domain.Ball;
 import baseball.domain.BallValidator;
 import baseball.domain.Player;
 import baseball.domain.Referee;
