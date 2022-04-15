@@ -9,17 +9,16 @@ public class GameService {
     private final Player pitcher;
     private final Player hitter;
     private final Referee referee;
-
+    private final int ballSize;
+    private BallValidator ballValidator;
     private Ball pitchBall;
 
-    private BallValidator ballValidator;
-
-    private final int ballSize;
-
-    public GameService(Player pitcher, Player hitter, Referee referee, int ballSize) {
+    public GameService(Player pitcher, Player hitter, Referee referee, Ball pitchBall, BallValidator ballValidator, int ballSize) {
         this.pitcher = pitcher;
         this.hitter = hitter;
         this.referee = referee;
+        this.pitchBall = pitchBall;
+        this.ballValidator = ballValidator;
         this.ballSize = ballSize;
     }
 

@@ -36,13 +36,13 @@ public class GameServiceTest {
 
     @Test
     public void 테스트_벨리데이터_NULL_체크() {
-        gameService = new GameService(hitter, pitcher, referee, ballSize);
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
         Assertions.assertThrows(NullPointerException.class, () -> gameService.setUp());
     }
 
     @Test
     public void 테스트_셋업호출체크() {
-        gameService = new GameService(hitter, pitcher, referee, ballSize);
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
         gameService.setBallValidator(ballValidator);
 
         Assertions.assertThrows(NullPointerException.class, () -> {
@@ -55,7 +55,7 @@ public class GameServiceTest {
 
     @Test
     public void 테스트_스코어검사() {
-        gameService = new GameService(hitter, pitcher, referee, ballSize);
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
         gameService.setBallValidator(ballValidator);
         gameService.setUp();
 

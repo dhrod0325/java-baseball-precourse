@@ -1,8 +1,12 @@
 package baseball.game;
 
-import baseball.domain.*;
+import baseball.domain.BallValidator;
+import baseball.domain.PlayerImpl;
+import baseball.domain.Referee;
+import baseball.domain.RefereeImpl;
 import baseball.game.controller.GameController;
 import baseball.game.service.GameService;
+import baseball.game.service.GameServiceBuilder;
 import baseball.game.util.InputBallGenerator;
 import baseball.game.util.RandomBallGenerator;
 
@@ -15,14 +19,17 @@ public class GameLauncher {
     int ballPieceMaxNumber;
 
     public void run() {
-        Player hitter = new PlayerImpl(new InputBallGenerator());
-        Player pitcher = new PlayerImpl(new RandomBallGenerator(ballSize, ballPieceMinNumber, ballPieceMaxNumber));
         Referee referee = new RefereeImpl();
 
-        GameService gameService = new GameService(pitcher, hitter, referee, ballSize);
-        gameService.setBallValidator(new BallValidator(ballSize, ballPieceMinNumber, ballPieceMaxNumber));
+        GameService gameService = new GameServiceBuilder()
+                .setPitcher(new PlayerImpl(new RandomBallGenerator(ballSize, ballPieceMinNumber, ballPieceMaxNumber)))
+                .setHitter(new PlayerImpl(new InputBallGenerator()))
+                .setReferee(referee)
+                .setBallSize(ballSize)
+                .setBallValidator(new BallValidator(ballSize, ballPieceMinNumber, ballPieceMaxNumber))
+                .build();
 
-        GameController gameView = new GameController(retryKey, exitKey, gameService);
-        gameView.start();
+        GameController gameController = new GameController(retryKey, exitKey, gameService);
+        gameController.start();
     }
 }
