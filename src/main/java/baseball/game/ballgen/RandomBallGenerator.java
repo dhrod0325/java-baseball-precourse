@@ -2,7 +2,7 @@ package baseball.game.ballgen;
 
 import baseball.domain.Ball;
 import baseball.domain.BallGenerator;
-import baseball.game.utils.RandomUtils;
+import baseball.utils.RandomUtils;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

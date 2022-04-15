@@ -1,13 +1,14 @@
-package baseball.game;
+package baseball.game.controller;
 
-import baseball.service.GameService;
-import baseball.game.utils.UiUtils;
+import baseball.game.service.GameService;
+import baseball.game.view.GameView;
 
 import java.util.function.Consumer;
 
-import static baseball.game.config.Message.*;
-
 public class GameController {
+    public static final String KEY_RETRY = "1";
+    public static final String KEY_EXIT = "2";
+
     private final GameService gameService;
 
     public GameController(GameService gameService) {
@@ -27,17 +28,17 @@ public class GameController {
     }
 
     private void checkScore() {
-        Consumer<Void> calcBefore = x -> UiUtils.println(MSG_INPUT);
-        Consumer<String> calcResult = UiUtils::println;
-        Consumer<Void> calcComplete = score -> UiUtils.println(MSG_SOLUTION);
+        Consumer<Void> calcBefore = x -> GameView.msgInput();
+        Consumer<String> calcResult = GameView::msgScore;
+        Consumer<Void> calcComplete = x -> GameView.msgSolution();
 
         gameService.checkScore(calcBefore, calcResult, calcComplete);
     }
 
     private void reStart() {
-        UiUtils.println(MSG_SELECT_END_MENU);
+        GameView.msgEndMenu();
 
-        String key = UiUtils.readLine();
+        String key = GameView.input();
 
         boolean isRetry = KEY_RETRY.equals(key);
         boolean isExit = KEY_EXIT.equals(key);

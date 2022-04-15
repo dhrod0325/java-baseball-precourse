@@ -38,6 +38,10 @@ public class Score {
         return scoreMap.getOrDefault(pitchResult, 0);
     }
 
+    public void clear() {
+        this.scoreMap.clear();
+    }
+
     @Override
     public String toString() {
         if (isNothing()) {

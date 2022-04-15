@@ -1,11 +1,9 @@
-package baseball.service;
+package baseball.game.service;
 
 import baseball.domain.*;
 
 import java.util.Objects;
 import java.util.function.Consumer;
-
-import static baseball.game.config.Config.BALL_SIZE;
 
 public class GameService {
     private final Player pitcher;
@@ -16,10 +14,13 @@ public class GameService {
 
     private BallValidator ballValidator;
 
-    public GameService(Player pitcher, Player hitter, Referee referee) {
+    private int ballSize;
+
+    public GameService(Player pitcher, Player hitter, Referee referee, int ballSize) {
         this.pitcher = pitcher;
         this.hitter = hitter;
         this.referee = referee;
+        this.ballSize = ballSize;
     }
 
     public void setBallValidator(BallValidator ballValidator) {
@@ -52,7 +53,7 @@ public class GameService {
     protected Score checkScore() {
         Objects.requireNonNull(pitchBall);
 
-        Score score = new Score(BALL_SIZE);
+        Score score = new Score(ballSize);
 
         Ball swingBall = validate(hitter.generateBall());
         score.addAll(referee.calcScore(pitchBall, swingBall));

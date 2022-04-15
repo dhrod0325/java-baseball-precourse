@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.game.service;
 
 import baseball.domain.*;
 import org.junit.jupiter.api.Assertions;
@@ -24,6 +24,7 @@ public class GameServiceTest {
     Referee referee;
     GameService gameService;
     BallValidator ballValidator;
+    int ballSize = 3;
 
     @BeforeEach
     public void before() {
@@ -34,17 +35,19 @@ public class GameServiceTest {
     }
 
     @Test
-    public void 테스트_벨리데이터_NULL체크() {
-        gameService = new GameService(hitter, pitcher, referee);
+    public void 테스트_벨리데이터_NULL_체크() {
+        gameService = new GameService(hitter, pitcher, referee, ballSize);
         Assertions.assertThrows(NullPointerException.class, () -> gameService.setUp());
     }
 
     @Test
     public void 테스트_셋업호출체크() {
-        gameService = new GameService(hitter, pitcher, referee);
-        gameService.setBallValidator(new BallValidator(3, 1, 9));
+        gameService = new GameService(hitter, pitcher, referee, ballSize);
+        gameService.setBallValidator(ballValidator);
+
         Assertions.assertThrows(NullPointerException.class, () -> {
-            gameService.checkScore(unused -> {}, s -> {
+            gameService.checkScore(unused -> {
+            }, s -> {
             }, unused -> {
             });
         });
@@ -52,7 +55,7 @@ public class GameServiceTest {
 
     @Test
     public void 테스트_스코어검사() {
-        gameService = new GameService(hitter, pitcher, referee);
+        gameService = new GameService(hitter, pitcher, referee, ballSize);
         gameService.setBallValidator(ballValidator);
         gameService.setUp();
 
