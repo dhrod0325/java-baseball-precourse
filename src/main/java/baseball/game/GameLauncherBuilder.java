@@ -1,10 +1,8 @@
 package baseball.game;
 
-@SuppressWarnings({"unused", "UnusedReturnValue"})
 public class GameLauncherBuilder {
     private String retryKey = "1";
     private String exitKey = "2";
-
     private int ballSize = 3;
     private int ballPieceMinNumber = 1;
     private int ballPieceMaxNumber = 9;
@@ -35,13 +33,6 @@ public class GameLauncherBuilder {
     }
 
     public GameLauncher build() {
-        GameLauncher gameLauncher = new GameLauncher();
-        gameLauncher.retryKey = retryKey;
-        gameLauncher.exitKey = exitKey;
-        gameLauncher.ballSize = ballSize;
-        gameLauncher.ballPieceMinNumber = ballPieceMinNumber;
-        gameLauncher.ballPieceMaxNumber = ballPieceMaxNumber;
-
-        return gameLauncher;
+        return new GameLauncher(retryKey, exitKey, ballSize, ballPieceMinNumber, ballPieceMaxNumber);
     }
 }

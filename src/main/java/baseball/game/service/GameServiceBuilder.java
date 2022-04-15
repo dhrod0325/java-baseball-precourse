@@ -9,7 +9,6 @@ public class GameServiceBuilder {
     private Player pitcher;
     private Player hitter;
     private Referee referee;
-    private Ball pitchBall;
     private BallValidator ballValidator;
     private int ballSize;
 
@@ -28,11 +27,6 @@ public class GameServiceBuilder {
         return this;
     }
 
-    public GameServiceBuilder setPitchBall(Ball pitchBall) {
-        this.pitchBall = pitchBall;
-        return this;
-    }
-
     public GameServiceBuilder setBallValidator(BallValidator ballValidator) {
         this.ballValidator = ballValidator;
         return this;
@@ -44,6 +38,6 @@ public class GameServiceBuilder {
     }
 
     public GameService build() {
-        return new GameService(pitcher, hitter, referee, pitchBall, ballValidator, ballSize);
+        return new GameService(pitcher, hitter, referee, ballValidator, ballSize);
     }
 }

@@ -11,12 +11,20 @@ import baseball.game.util.InputBallGenerator;
 import baseball.game.util.RandomBallGenerator;
 
 public class GameLauncher {
-    String retryKey;
-    String exitKey;
+    private final String retryKey;
+    private final String exitKey;
 
-    int ballSize;
-    int ballPieceMinNumber;
-    int ballPieceMaxNumber;
+    private final int ballSize;
+    private final int ballPieceMinNumber;
+    private final int ballPieceMaxNumber;
+
+    public GameLauncher(String retryKey, String exitKey, int ballSize, int ballPieceMinNumber, int ballPieceMaxNumber) {
+        this.retryKey = retryKey;
+        this.exitKey = exitKey;
+        this.ballSize = ballSize;
+        this.ballPieceMinNumber = ballPieceMinNumber;
+        this.ballPieceMaxNumber = ballPieceMaxNumber;
+    }
 
     public void run() {
         Referee referee = new RefereeImpl();
