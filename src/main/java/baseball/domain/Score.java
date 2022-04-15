@@ -8,6 +8,7 @@ public class Score {
     public static final String BALL = "볼";
 
     private final int ballSize;
+
     private final Map<String, Integer> scoreMap = new TreeMap<>();
 
     public Score(int ballSize) {
@@ -48,7 +49,8 @@ public class Score {
         for (Map.Entry<String, Integer> entrySet : scoreMap.entrySet()) {
             String pitchResult = entrySet.getKey();
             Integer count = entrySet.getValue();
-            result.add(count + "" + pitchResult);
+
+            result.add(String.format("%d%s", count, pitchResult));
         }
 
         return String.join(" ", result).trim();

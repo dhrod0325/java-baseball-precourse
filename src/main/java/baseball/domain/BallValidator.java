@@ -35,8 +35,9 @@ public class BallValidator {
     private void validateMinMax(String input) {
         Set<String> stringSet = new LinkedHashSet<>(Arrays.asList(input.split("")));
 
-        for (String letter : stringSet) {
-            int letterNumber = Integer.parseInt(letter);
+        for (String string : stringSet) {
+            int letterNumber = Integer.parseInt(string);
+
             validateMinOfLetter(letterNumber, minNumber);
             validateMaxOfLetter(letterNumber, maxNumber);
         }
