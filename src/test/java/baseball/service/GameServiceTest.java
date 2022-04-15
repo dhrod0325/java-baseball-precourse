@@ -36,16 +36,15 @@ public class GameServiceTest {
     @Test
     public void 테스트_벨리데이터_NULL체크() {
         gameService = new GameService(hitter, pitcher, referee);
-        Assertions.assertThrows(NotInitValidatorException.class, () -> gameService.setUp());
+        Assertions.assertThrows(NullPointerException.class, () -> gameService.setUp());
     }
 
     @Test
     public void 테스트_셋업호출체크() {
         gameService = new GameService(hitter, pitcher, referee);
         gameService.setBallValidator(new BallValidator(3, 1, 9));
-        Assertions.assertThrows(NotInitPitchBallException.class, () -> {
-            gameService.checkScore(unused -> {
-            }, s -> {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            gameService.checkScore(unused -> {}, s -> {
             }, unused -> {
             });
         });
@@ -56,6 +55,7 @@ public class GameServiceTest {
         gameService = new GameService(hitter, pitcher, referee);
         gameService.setBallValidator(ballValidator);
         gameService.setUp();
+
         Score check = gameService.checkScore();
         Assertions.assertTrue(check.isNothing());
     }

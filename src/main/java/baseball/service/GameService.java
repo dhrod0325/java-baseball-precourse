@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.*;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static baseball.game.config.Config.BALL_SIZE;
@@ -30,8 +31,14 @@ public class GameService {
     }
 
     public void checkScore(Consumer<Void> before, Consumer<String> after, Consumer<Void> complete) {
+        Objects.requireNonNull(before);
+        Objects.requireNonNull(after);
+        Objects.requireNonNull(complete);
+
         before.accept(null);
+
         Score score = checkScore();
+
         after.accept(score.toString());
 
         if (!score.isThreeStrike()) {
@@ -43,8 +50,7 @@ public class GameService {
     }
 
     protected Score checkScore() {
-        if (this.pitchBall == null)
-            throw new NotInitPitchBallException();
+        Objects.requireNonNull(pitchBall);
 
         Score score = new Score(BALL_SIZE);
 
@@ -55,27 +61,8 @@ public class GameService {
     }
 
     private Ball validate(Ball ball) {
-        if (ballValidator == null) {
-            throw new NotInitValidatorException();
-        }
-
+        Objects.requireNonNull(ballValidator);
         return ballValidator.validate(ball);
-    }
-}
-
-class NotInitValidatorException extends RuntimeException {
-    public static final String ERROR_NOT_INIT_VALIDATOR = "Validator가 설정되지 않았습니다.";
-
-    public NotInitValidatorException() {
-        super(ERROR_NOT_INIT_VALIDATOR);
-    }
-}
-
-class NotInitPitchBallException extends RuntimeException {
-    public static final String ERROR_NOT_INIT_PITCH = "투수가 준비되지 않았습니다. setUp() 메소드를 호출하세요.";
-
-    public NotInitPitchBallException() {
-        super(ERROR_NOT_INIT_PITCH);
     }
 }
 

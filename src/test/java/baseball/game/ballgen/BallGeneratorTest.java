@@ -3,7 +3,6 @@ package baseball.game.ballgen;
 import baseball.domain.Ball;
 import baseball.domain.BallGenerator;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BallGeneratorTest {
     @Test
-    @DisplayName("1000번 반복하여 중복되는 난수가 존재하는지 확인한다")
     public void 테스트_중복없는_난수생성() {
         int length = 3;
 

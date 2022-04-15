@@ -77,5 +77,10 @@ public class Ball implements Iterable<Ball.BallPiece> {
 
             return Score.BALL;
         }
+
+        @Override
+        public String toString() {
+            return String.format("{number=%d,position=%d}", number, position);
+        }
     }
 }
