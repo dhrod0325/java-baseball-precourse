@@ -13,7 +13,7 @@ public class GameService {
     private final Player hitter;
     private final Referee referee;
     private final int ballSize;
-    private BallValidator ballValidator;
+    private final BallValidator ballValidator;
 
     private Ball pitchBall;
 
@@ -23,10 +23,6 @@ public class GameService {
         this.referee = referee;
         this.ballValidator = ballValidator;
         this.ballSize = ballSize;
-    }
-
-    public void setBallValidator(BallValidator ballValidator) {
-        this.ballValidator = ballValidator;
     }
 
     public void setUp() {
