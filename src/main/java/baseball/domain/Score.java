@@ -19,14 +19,14 @@ public class Score {
         this.ballSize = ballSize;
     }
 
-    public void addScore(String pitchResult) {
-        int count = getScoreCount(pitchResult);
-        scoreMap.put(pitchResult, count + 1);
+    public void add(String result) {
+        int count = getScoreCount(result);
+        scoreMap.put(result, count + 1);
     }
 
-    public void addAll(Collection<String> pitchResults) {
-        for (String pitchResult : pitchResults) {
-            addScore(pitchResult);
+    public void addAll(Collection<String> resultList) {
+        for (String pitchResult : resultList) {
+            add(pitchResult);
         }
     }
 
@@ -42,25 +42,18 @@ public class Score {
         return scoreMap.getOrDefault(pitchResult, 0);
     }
 
-    public void clear() {
-        this.scoreMap.clear();
-    }
-
     @Override
     public String toString() {
         if (isNothing()) {
             return NOTHING;
         }
 
-        List<String> result = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entrySet : scoreMap.entrySet()) {
-            String pitchResult = entrySet.getKey();
-            Integer count = entrySet.getValue();
-
-            result.add(String.format("%d%s", count, pitchResult));
+            list.add(String.format("%d%s", entrySet.getValue(), entrySet.getKey()));
         }
 
-        return String.join(" ", result).trim();
+        return String.join(" ", list).trim();
     }
 }

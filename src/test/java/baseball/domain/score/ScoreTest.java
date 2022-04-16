@@ -70,7 +70,7 @@ public class ScoreTest {
         Score score = new Score(size);
 
         for (int i = 0; i < size; i++) {
-            score.addScore(BALL);
+            score.add(BALL);
             assertEquals(score.getScoreCount(BALL), i + 1);
         }
     }
