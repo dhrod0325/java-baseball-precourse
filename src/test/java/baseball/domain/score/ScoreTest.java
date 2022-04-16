@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 public class ScoreTest {
     public Score getScore(String pitchInput, String swingInput) {
         Score score = new Score(3);
-        score.addAll(new Ball(pitchInput).checkScore(new Ball(swingInput)));
+        score.addAll(new Ball(pitchInput).getMatchResultList(new Ball(swingInput)));
         return score;
     }
 

@@ -1,6 +1,7 @@
 package baseball.domain.ball;
 
 import baseball.domain.Ball;
+import baseball.domain.Ball.BallItem;
 import baseball.domain.Score;
 import java.util.Arrays;
 import java.util.List;
@@ -18,16 +19,16 @@ public class BallTest {
     }
 
     @Test
-    public void 테스트_getPieceByNumber() {
-        Ball.BallPiece ballPiece = new Ball.BallPiece(6, 2);
-        Assertions.assertEquals(ballPiece.checkPitchResult(new Ball("621")), Score.BALL);
-        Assertions.assertEquals(ballPiece.checkPitchResult(new Ball("126")), Score.STRIKE);
+    public void 테스트_getItemByNumber() {
+        BallItem item = new BallItem(6, 2);
+        Assertions.assertEquals(item.getMatchResult(new Ball("621")), Score.BALL);
+        Assertions.assertEquals(item.getMatchResult(new Ball("126")), Score.STRIKE);
     }
 
     @Test
     public void 테스트_checkScore() {
         Ball ball = new Ball("123");
-        List<String> check = ball.checkScore(new Ball("456"));
+        List<String> check = ball.getMatchResultList(new Ball("456"));
         Assertions.assertEquals(check, Arrays.asList(Score.NOTHING, Score.NOTHING, Score.NOTHING));
     }
 }

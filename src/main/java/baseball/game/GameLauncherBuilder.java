@@ -6,8 +6,8 @@ public class GameLauncherBuilder {
 
     private int ballSize = 3;
 
-    private int ballPieceMinNumber = 1;
-    private int ballPieceMaxNumber = 9;
+    private int ballItemMinNumber = 1;
+    private int ballItemMaxNumber = 9;
 
     public GameLauncherBuilder setRetryKey(String retryKey) {
         this.retryKey = retryKey;
@@ -24,17 +24,17 @@ public class GameLauncherBuilder {
         return this;
     }
 
-    public GameLauncherBuilder setBallPieceMinNumber(int ballPieceMinNumber) {
-        this.ballPieceMinNumber = ballPieceMinNumber;
+    public GameLauncherBuilder setBallItemMinNumber(int ballItemMinNumber) {
+        this.ballItemMinNumber = ballItemMinNumber;
         return this;
     }
 
-    public GameLauncherBuilder setBallPieceMaxNumber(int ballPieceMaxNumber) {
-        this.ballPieceMaxNumber = ballPieceMaxNumber;
+    public GameLauncherBuilder setBallItemMaxNumber(int ballItemMaxNumber) {
+        this.ballItemMaxNumber = ballItemMaxNumber;
         return this;
     }
 
     public GameLauncher build() {
-        return new GameLauncher(retryKey, exitKey, ballSize, ballPieceMinNumber, ballPieceMaxNumber);
+        return new GameLauncher(retryKey, exitKey, ballSize, ballItemMinNumber, ballItemMaxNumber);
     }
 }
