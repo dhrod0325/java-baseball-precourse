@@ -15,6 +15,7 @@ public class GameLauncher {
     private final String exitKey;
 
     private final int ballSize;
+
     private final int ballPieceMinNumber;
     private final int ballPieceMaxNumber;
 
