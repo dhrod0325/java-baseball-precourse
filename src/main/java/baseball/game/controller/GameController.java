@@ -21,7 +21,7 @@ public class GameController {
 
         checkScore();
 
-        reStart();
+        retryOrExit();
     }
 
     private void setUp() {
@@ -36,21 +36,26 @@ public class GameController {
         gameService.checkScore(calcBefore, calcResult, calcComplete);
     }
 
-    private void reStart() {
+    private void retryOrExit() {
         GameView.msgEndMenu();
 
         String key = GameView.input();
 
-        boolean isRetry = retryKey.equals(key);
-        boolean isExit = exitKey.equals(key);
-
-        if (isRetry) {
+        if (isRetry(key)) {
             start();
             return;
         }
 
-        if (!isExit) {
-            reStart();
+        if (!isExit(key)) {
+            retryOrExit();
         }
+    }
+
+    private boolean isRetry(String key) {
+        return retryKey.equals(key);
+    }
+
+    private boolean isExit(String key) {
+        return exitKey.equals(key);
     }
 }

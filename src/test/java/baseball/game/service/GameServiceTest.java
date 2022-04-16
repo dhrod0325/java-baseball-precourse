@@ -50,8 +50,7 @@ public class GameServiceTest {
 
     @Test
     public void 테스트_셋업호출체크() {
-        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee)
-                .setBallSize(ballSize).build();
+        gameService = new GameServiceBuilder().setPitcher(hitter).setHitter(pitcher).setReferee(referee).setBallSize(ballSize).build();
         gameService.setBallValidator(ballValidator);
 
         Assertions.assertThrows(NullPointerException.class, () -> {
